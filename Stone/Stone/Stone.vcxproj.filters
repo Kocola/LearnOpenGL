@@ -1,0 +1,321 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="头文件\数字化石碑">
+      <UniqueIdentifier>{70882677-5112-4d32-a6ea-543b86cef16e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\数字化石碑">
+      <UniqueIdentifier>{63244a4d-6fed-45ed-81a5-71de104cb5c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\单例">
+      <UniqueIdentifier>{3e318c20-f647-46c8-aa15-ac07db6eec84}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\单例">
+      <UniqueIdentifier>{8e60e335-9038-43df-b40c-333b3866f10c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\数字化石碑\模型文件">
+      <UniqueIdentifier>{66775941-1b26-4866-a774-16bc5626a124}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\数字化石碑\模型文件">
+      <UniqueIdentifier>{c08aa1ee-f922-40d6-b5e4-ca143ede5e8e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\计时器">
+      <UniqueIdentifier>{547dc764-89d4-4e17-83ff-768e5e59d878}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\渲染系统">
+      <UniqueIdentifier>{be09fa48-d021-47d6-bdc2-9f5a46f31a90}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\渲染系统">
+      <UniqueIdentifier>{e94068b6-b907-49f3-b267-e7fc79630ca9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\渲染系统\着色器程序">
+      <UniqueIdentifier>{7c655b81-7f83-44fb-989a-8cf283e82e33}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\渲染系统\着色器程序">
+      <UniqueIdentifier>{756137a0-a346-47bd-aa66-6f73f6819452}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\单例\资源管理器">
+      <UniqueIdentifier>{46bcb5a3-f7d6-4c5e-b316-fe33a89be312}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\计时器">
+      <UniqueIdentifier>{8f3b6dcf-3375-4815-b279-4931c56e5b69}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\单例\资源管理器">
+      <UniqueIdentifier>{f21b4a7c-5cc5-448c-99cf-279289c73d6e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\渲染系统\纹理">
+      <UniqueIdentifier>{c4a719f7-39d8-4fd2-8376-b938c5a5930f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\渲染系统\纹理">
+      <UniqueIdentifier>{5c506320-6e15-4f36-8d6e-0b3ab894c1f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\摄像机">
+      <UniqueIdentifier>{df0fb022-acef-4a14-bfb3-06ffa647b509}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\摄像机">
+      <UniqueIdentifier>{57abae54-4d25-4291-af58-81c035904a94}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\单例\输入管理器">
+      <UniqueIdentifier>{0d7c42bc-8ce4-468f-bd9a-ffba9a9e8b82}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\单例\输入管理器">
+      <UniqueIdentifier>{5963e029-5eb5-4954-9e7a-ce5c1172340f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\数字化石碑\平面拟合">
+      <UniqueIdentifier>{62d25f0f-c2bd-4c71-aef3-1d0cec86dc67}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\数字化石碑\平面拟合">
+      <UniqueIdentifier>{ac4b62a1-f5dc-45bf-b707-02d00e4786ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\渲染系统\几何物体">
+      <UniqueIdentifier>{de9f6fb5-9a27-442f-a506-0a780404df63}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\渲染系统\几何物体">
+      <UniqueIdentifier>{23bf4057-3e94-46fa-ba16-855fd1fa412c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\渲染系统\面片">
+      <UniqueIdentifier>{00a826f1-bd46-4829-adb9-f657ee6d084e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\测试">
+      <UniqueIdentifier>{7950b335-bfd4-46e5-b48d-ccada550617c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\测试">
+      <UniqueIdentifier>{24f4ff20-9291-4802-bb1f-219b220a7770}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\渲染系统\面片">
+      <UniqueIdentifier>{ae6ac43f-edc9-48ca-a316-8b4588fc2646}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\渲染系统\光照">
+      <UniqueIdentifier>{61263557-6454-4ad7-abab-5653ad1141b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\渲染系统\光照">
+      <UniqueIdentifier>{2bc181a2-4f9b-4f47-b9fc-9cef035ec51d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\渲染系统\光照\点光源">
+      <UniqueIdentifier>{2fdd8841-d7c6-4abf-89c6-77dffec8541a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\渲染系统\光照\点光源">
+      <UniqueIdentifier>{d6bd38ef-c03a-45fa-b1fa-6d27f0d074b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\渲染系统\光照\平行光">
+      <UniqueIdentifier>{ecc9a6c2-faef-4df2-ac0c-39b99bb6de2d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\渲染系统\光照\平行光">
+      <UniqueIdentifier>{ff4480ce-9eea-4856-83c7-9d83e1a442a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\渲染系统\光照\点光源\聚光灯">
+      <UniqueIdentifier>{794fd78c-38dd-4829-8f1b-74c250315b02}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\渲染系统\光照\点光源\聚光灯">
+      <UniqueIdentifier>{f3767bb2-2474-4a39-9eef-a3b81375ef2d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\渲染系统\纹理\立方体纹理">
+      <UniqueIdentifier>{b925169e-15b9-47cc-87dd-a6d649f6073e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\渲染系统\纹理\立方体纹理">
+      <UniqueIdentifier>{06289a86-b800-4b96-af15-7839f4d4759d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\渲染系统\天空盒">
+      <UniqueIdentifier>{d6cd185e-f15e-4b3e-ac27-5484296136f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\渲染系统\天空盒">
+      <UniqueIdentifier>{abebd20b-afe7-4baa-a7de-afbd766a8bc4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\星系系统">
+      <UniqueIdentifier>{a79c82b5-144b-4e17-9a66-181fefec3452}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\星系系统">
+      <UniqueIdentifier>{ee19d448-4464-4ba7-8dec-dcfa81eb01eb}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Common.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Application.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="StealRubb.h">
+      <Filter>头文件\数字化石碑</Filter>
+    </ClInclude>
+    <ClInclude Include="Singleton.h">
+      <Filter>头文件\单例</Filter>
+    </ClInclude>
+    <ClInclude Include="Timer.h">
+      <Filter>头文件\计时器</Filter>
+    </ClInclude>
+    <ClInclude Include="ModelFile.h">
+      <Filter>头文件\数字化石碑\模型文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderProgram.h">
+      <Filter>头文件\渲染系统\着色器程序</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourceManager.h">
+      <Filter>头文件\单例\资源管理器</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture2D.h">
+      <Filter>头文件\渲染系统\纹理</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>头文件\摄像机</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManager.h">
+      <Filter>头文件\单例\输入管理器</Filter>
+    </ClInclude>
+    <ClInclude Include="PlaneFit.h">
+      <Filter>头文件\数字化石碑\平面拟合</Filter>
+    </ClInclude>
+    <ClInclude Include="Shape.h">
+      <Filter>头文件\渲染系统\几何物体</Filter>
+    </ClInclude>
+    <ClInclude Include="Cube.h">
+      <Filter>头文件\渲染系统\几何物体</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh.h">
+      <Filter>头文件\渲染系统\面片</Filter>
+    </ClInclude>
+    <ClInclude Include="CubeMesh.h">
+      <Filter>头文件\渲染系统\面片</Filter>
+    </ClInclude>
+    <ClInclude Include="ShapeMesh.h">
+      <Filter>头文件\渲染系统\面片</Filter>
+    </ClInclude>
+    <ClInclude Include="Test.h">
+      <Filter>头文件\测试</Filter>
+    </ClInclude>
+    <ClInclude Include="Sphere.h">
+      <Filter>头文件\渲染系统\几何物体</Filter>
+    </ClInclude>
+    <ClInclude Include="SphereMesh.h">
+      <Filter>头文件\渲染系统\面片</Filter>
+    </ClInclude>
+    <ClInclude Include="Light.h">
+      <Filter>头文件\渲染系统\光照</Filter>
+    </ClInclude>
+    <ClInclude Include="PointLight.h">
+      <Filter>头文件\渲染系统\光照\点光源</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectionalLight.h">
+      <Filter>头文件\渲染系统\光照\平行光</Filter>
+    </ClInclude>
+    <ClInclude Include="SpotLight.h">
+      <Filter>头文件\渲染系统\光照\点光源\聚光灯</Filter>
+    </ClInclude>
+    <ClInclude Include="Plane.h">
+      <Filter>头文件\渲染系统\几何物体</Filter>
+    </ClInclude>
+    <ClInclude Include="PlaneMesh.h">
+      <Filter>头文件\渲染系统\面片</Filter>
+    </ClInclude>
+    <ClInclude Include="CubeMap.h">
+      <Filter>头文件\渲染系统\纹理\立方体纹理</Filter>
+    </ClInclude>
+    <ClInclude Include="SkyBox.h">
+      <Filter>头文件\渲染系统\天空盒</Filter>
+    </ClInclude>
+    <ClInclude Include="SunEarthMoon.h">
+      <Filter>头文件\星系系统</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Application.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="StelaRubb.cpp">
+      <Filter>源文件\数字化石碑</Filter>
+    </ClCompile>
+    <ClCompile Include="Singleton.cpp">
+      <Filter>源文件\单例</Filter>
+    </ClCompile>
+    <ClCompile Include="Timer.cpp">
+      <Filter>源文件\计时器</Filter>
+    </ClCompile>
+    <ClCompile Include="ModelFile.cpp">
+      <Filter>源文件\数字化石碑\模型文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderProgram.cpp">
+      <Filter>源文件\渲染系统\着色器程序</Filter>
+    </ClCompile>
+    <ClCompile Include="ResourceManager.cpp">
+      <Filter>源文件\单例\资源管理器</Filter>
+    </ClCompile>
+    <ClCompile Include="Common.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture2D.cpp">
+      <Filter>源文件\渲染系统\纹理</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>源文件\摄像机</Filter>
+    </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>源文件\单例\输入管理器</Filter>
+    </ClCompile>
+    <ClCompile Include="PlaneFit.cpp">
+      <Filter>源文件\数字化石碑\平面拟合</Filter>
+    </ClCompile>
+    <ClCompile Include="Shape.cpp">
+      <Filter>源文件\渲染系统\几何物体</Filter>
+    </ClCompile>
+    <ClCompile Include="Cube.cpp">
+      <Filter>源文件\渲染系统\几何物体</Filter>
+    </ClCompile>
+    <ClCompile Include="CubeMesh.cpp">
+      <Filter>源文件\渲染系统\面片</Filter>
+    </ClCompile>
+    <ClCompile Include="ShapeMesh.cpp">
+      <Filter>源文件\渲染系统\面片</Filter>
+    </ClCompile>
+    <ClCompile Include="Test.cpp">
+      <Filter>源文件\测试</Filter>
+    </ClCompile>
+    <ClCompile Include="Sphere.cpp">
+      <Filter>源文件\渲染系统\几何物体</Filter>
+    </ClCompile>
+    <ClCompile Include="SphereMesh.cpp">
+      <Filter>源文件\渲染系统\面片</Filter>
+    </ClCompile>
+    <ClCompile Include="Light.cpp">
+      <Filter>源文件\渲染系统\光照</Filter>
+    </ClCompile>
+    <ClCompile Include="PointLight.cpp">
+      <Filter>源文件\渲染系统\光照\点光源</Filter>
+    </ClCompile>
+    <ClCompile Include="DirectionalLight.cpp">
+      <Filter>源文件\渲染系统\光照\平行光</Filter>
+    </ClCompile>
+    <ClCompile Include="SpotLight.cpp">
+      <Filter>源文件\渲染系统\光照\点光源\聚光灯</Filter>
+    </ClCompile>
+    <ClCompile Include="PlaneMesh.cpp">
+      <Filter>源文件\渲染系统\面片</Filter>
+    </ClCompile>
+    <ClCompile Include="Plane.cpp">
+      <Filter>源文件\渲染系统\几何物体</Filter>
+    </ClCompile>
+    <ClCompile Include="CubeMap.cpp">
+      <Filter>源文件\渲染系统\纹理\立方体纹理</Filter>
+    </ClCompile>
+    <ClCompile Include="SkyBox.cpp">
+      <Filter>源文件\渲染系统\天空盒</Filter>
+    </ClCompile>
+    <ClCompile Include="SunEarthMoon.cpp">
+      <Filter>源文件\星系系统</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
