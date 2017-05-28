@@ -43,29 +43,23 @@ Shape::~Shape()
 
 void Shape::draw()
 {
+	glCheckError();
 	_shaderProgram.setUniformValue("model", _modelMatrix);
-	//_modelMatrix = glm::mat4(1.0f);
 	_shaderProgram.setUniformValue("shininess", _shininess);
 	_shaderProgram.use();
-	glCheckError();
 	for (int i = 0; i < _texture2Ds.size(); ++i)
 	{
 		_shaderProgram.setUniformValue(_textureNames[i].c_str(), i);
 		glActiveTexture(GL_TEXTURE0 + i);
 		_texture2Ds[i].bind();
 	}
-	//_texture2D.bind();
-	glCheckError();
 	render();
-	glCheckError();
 	for (int i = 0; i < _texture2Ds.size(); ++i)
 	{
 		_texture2Ds[i].release();
 	}
-	//_texture2D.release();
 	_shaderProgram.release();
 	glCheckError();
-	//_modelMatrix = glm::mat4(1.0f);
 }
 
 void Shape::render()

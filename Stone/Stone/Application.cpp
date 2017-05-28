@@ -69,11 +69,13 @@ bool Application::initWindow(int width_, int height_,
 		return false;
 	}
 	glfwMakeContextCurrent(_window);
-	glfwSetInputMode(_window, GLFW_CURSOR, GLFW_CURSOR);
+	//glfwSetInputMode(_window, GLFW_CURSOR, GLFW_CURSOR);
+	glfwSetInputMode(_window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
 	glfwSetKeyCallback(_window, keyCallback);
 	glfwSetCursorPosCallback(_window, mouseMoveCallback);
 	glfwSetScrollCallback(_window, mouseScrollCallback);
+	glfwSetMouseButtonCallback(_window, mouseButtonCallback);
 
 	//重置鼠标在窗口中间
 	glfwSetCursorPos(_window, width_ / 2.0f, height_ / 2.0f);
@@ -146,7 +148,7 @@ void Application::processInput(GLfloat dt)
 	}
 
 	_camera.processMouseMove(InputManager::getInstance().s_deltaX,
-		InputManager::getInstance().s_deltaY);
+		InputManager::getInstance().s_deltaY, InputManager::s_mouseMoveState);
 	_camera.processMouseScroll(InputManager::getInstance().s_mouseScroll);
 
 	InputManager::getInstance().clearMouseScroll();
@@ -169,14 +171,28 @@ void Application::keyCallback(GLFWwindow* window_, int key_, int scancode_,
 void Application::mouseMoveCallback(GLFWwindow* window_, double xPos_,
 	double yPos_)
 {
-	glCheckError();
-	//std::cout << "mouseCallback" << xPos_ << ", " << yPos_ << std::endl;
 	InputManager::getInstance().processMouseMove(xPos_, yPos_);
-	glCheckError();
 }
 
 void Application::mouseScrollCallback(GLFWwindow* window_, double xOffset_,
 	double yOffset_)
 {
 	InputManager::processMouseScroll(yOffset_);
+}
+
+void Application::mouseButtonCallback(GLFWwindow* window, int button,
+	int action, int mods)
+{
+	if (action != GLFW_PRESS)
+	{
+		InputManager::s_mouseMoveState = Camera::NONE;
+	}
+	else if (button == GLFW_MOUSE_BUTTON_LEFT)
+	{
+		InputManager::s_mouseMoveState = Camera::ANGLE;
+	}
+	else if (button == GLFW_MOUSE_BUTTON_RIGHT)
+	{
+		InputManager::s_mouseMoveState = Camera::LENGTH;
+	}
 }

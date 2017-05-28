@@ -88,12 +88,6 @@
     <Filter Include="源文件\渲染系统\面片">
       <UniqueIdentifier>{00a826f1-bd46-4829-adb9-f657ee6d084e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="头文件\测试">
-      <UniqueIdentifier>{7950b335-bfd4-46e5-b48d-ccada550617c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="源文件\测试">
-      <UniqueIdentifier>{24f4ff20-9291-4802-bb1f-219b220a7770}</UniqueIdentifier>
-    </Filter>
     <Filter Include="头文件\渲染系统\面片">
       <UniqueIdentifier>{ae6ac43f-edc9-48ca-a316-8b4588fc2646}</UniqueIdentifier>
     </Filter>
@@ -133,11 +127,35 @@
     <Filter Include="头文件\渲染系统\天空盒">
       <UniqueIdentifier>{abebd20b-afe7-4baa-a7de-afbd766a8bc4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="头文件\星系系统">
+    <Filter Include="头文件\课程主题">
+      <UniqueIdentifier>{c6674db5-8761-4d8b-9944-65a962c649de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\课程主题\测试">
+      <UniqueIdentifier>{7950b335-bfd4-46e5-b48d-ccada550617c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\课程主题\星系系统">
       <UniqueIdentifier>{a79c82b5-144b-4e17-9a66-181fefec3452}</UniqueIdentifier>
     </Filter>
-    <Filter Include="源文件\星系系统">
+    <Filter Include="源文件\课程主题">
+      <UniqueIdentifier>{9e89ccab-9a93-4035-b27b-c4015b85fc78}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\课程主题\测试">
+      <UniqueIdentifier>{24f4ff20-9291-4802-bb1f-219b220a7770}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\课程主题\星系系统">
       <UniqueIdentifier>{ee19d448-4464-4ba7-8dec-dcfa81eb01eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\课程主题\法线贴图">
+      <UniqueIdentifier>{318db174-2bb2-4e42-b3b5-bdd1cd4f74b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\课程主题\法线贴图">
+      <UniqueIdentifier>{1256e386-908c-452c-8fd8-f944785751b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\算法">
+      <UniqueIdentifier>{28937ffd-2522-47e2-b6e5-b3b6594da75e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\算法">
+      <UniqueIdentifier>{6d35cd73-7eef-43b3-a54c-90e1854a9e06}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -193,7 +211,7 @@
       <Filter>头文件\渲染系统\面片</Filter>
     </ClInclude>
     <ClInclude Include="Test.h">
-      <Filter>头文件\测试</Filter>
+      <Filter>头文件\课程主题\测试</Filter>
     </ClInclude>
     <ClInclude Include="Sphere.h">
       <Filter>头文件\渲染系统\几何物体</Filter>
@@ -226,7 +244,16 @@
       <Filter>头文件\渲染系统\天空盒</Filter>
     </ClInclude>
     <ClInclude Include="SunEarthMoon.h">
-      <Filter>头文件\星系系统</Filter>
+      <Filter>头文件\课程主题\星系系统</Filter>
+    </ClInclude>
+    <ClInclude Include="NormalMap.h">
+      <Filter>头文件\课程主题\法线贴图</Filter>
+    </ClInclude>
+    <ClInclude Include="AdvancedCamera.h">
+      <Filter>头文件\摄像机</Filter>
+    </ClInclude>
+    <ClInclude Include="Utility.h">
+      <Filter>头文件\算法</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -282,7 +309,7 @@
       <Filter>源文件\渲染系统\面片</Filter>
     </ClCompile>
     <ClCompile Include="Test.cpp">
-      <Filter>源文件\测试</Filter>
+      <Filter>源文件\课程主题\测试</Filter>
     </ClCompile>
     <ClCompile Include="Sphere.cpp">
       <Filter>源文件\渲染系统\几何物体</Filter>
@@ -315,7 +342,13 @@
       <Filter>源文件\渲染系统\天空盒</Filter>
     </ClCompile>
     <ClCompile Include="SunEarthMoon.cpp">
-      <Filter>源文件\星系系统</Filter>
+      <Filter>源文件\课程主题\星系系统</Filter>
+    </ClCompile>
+    <ClCompile Include="NormalMap.cpp">
+      <Filter>源文件\课程主题\法线贴图</Filter>
+    </ClCompile>
+    <ClCompile Include="Utility.cpp">
+      <Filter>源文件\算法</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

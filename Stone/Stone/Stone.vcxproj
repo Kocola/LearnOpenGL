@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AdvancedCamera.h" />
     <ClInclude Include="Application.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Common.h" />
@@ -21,6 +22,7 @@
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="Light.h" />
     <ClInclude Include="Mesh.h" />
+    <ClInclude Include="NormalMap.h" />
     <ClInclude Include="Plane.h" />
     <ClInclude Include="PlaneMesh.h" />
     <ClInclude Include="PointLight.h" />
@@ -40,6 +42,7 @@
     <ClInclude Include="Test.h" />
     <ClInclude Include="Texture2D.h" />
     <ClInclude Include="Timer.h" />
+    <ClInclude Include="Utility.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
@@ -53,6 +56,7 @@
     <ClCompile Include="Light.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="ModelFile.cpp" />
+    <ClCompile Include="NormalMap.cpp" />
     <ClCompile Include="Plane.cpp" />
     <ClCompile Include="PlaneFit.cpp" />
     <ClCompile Include="PlaneMesh.cpp" />
@@ -71,6 +75,7 @@
     <ClCompile Include="Test.cpp" />
     <ClCompile Include="Texture2D.cpp" />
     <ClCompile Include="Timer.cpp" />
+    <ClCompile Include="Utility.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{BEA02094-7D55-41FC-B096-8DEDCDEA8115}</ProjectGuid>

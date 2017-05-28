@@ -47,6 +47,9 @@ private:
 	static void mouseScrollCallback(GLFWwindow* window_, double xOffset_,
 		double yOffset_);
 
+	static void mouseButtonCallback(GLFWwindow* window, int button,
+		int action, int mods);
+
 private:
 	GLFWwindow*		_window;
 	unsigned int			_fps;

@@ -1,6 +1,7 @@
 #ifndef					__INPUT_MANAGER_H__
 #define					__INPUT_MANAGER_H__
 
+#include "Camera.h"
 #include "Common.h"
 #include "Singleton.h"
 
@@ -14,7 +15,7 @@ public:
 
 	static void processKeyboard(GLint key_, GLint action_);
 
-	static void processMouseMove(GLfloat x_, GLint y_);
+	static void processMouseMove(GLint x_, GLint y_);
 
 	static void processMouseScroll(GLfloat yOffset_);
 
@@ -30,6 +31,8 @@ private:
 	static GLfloat			s_deltaX;
 	static GLfloat			s_deltaY;
 	static GLfloat			s_mouseScroll;
+
+	static Camera::MouseMove s_mouseMoveState;
 };
 
 #endif

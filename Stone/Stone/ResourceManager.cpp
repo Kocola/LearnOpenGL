@@ -45,12 +45,16 @@ void ResourceManager::initResource()
 		//->setUniformBlockBind("Camera", CameraUniformBindPoint);
 	loadShaderProgram("shaders/advancedLight/pointShadow.vs", "shaders/advancedLight/pointShadow.frag", nullptr, "pointShadow")
 		->setUniformBlockBind("Camera", CameraUniformBindPoint);
+	loadShaderProgram("shaders/advancedLight/normalMap/simpleNormalMap.vs", "shaders/advancedLight/normalMap/simpleNormalMap.frag", nullptr, "simpleNormalMap")
+		->setUniformBlockBind("Camera", CameraUniformBindPoint);
 
 	loadTexture2D("resources/textures/moss/mossgrown_normal.png", GL_FALSE, "moss");
 	loadTexture2D("resources/textures/planet_textures/texture_earth_clouds.jpg", GL_FALSE, "earth");
 	loadTexture2D("resources/textures/planet_textures/texture_sun.jpg", GL_FALSE, "sun");
 	loadTexture2D("resources/textures/planet_textures/texture_moon.jpg", GL_FALSE, "moon");
 	loadCubeMap("resources/textures/skybox/", GL_FALSE, "cubemap");
+	loadTexture2D("resources/textures/normalMap/brickwall.jpg", GL_FALSE, "brickWall");
+	loadTexture2D("resources/textures/normalMap/brickwall_normal.jpg", GL_FALSE, "normalBrickWall");
 }
 
 ShaderProgram* ResourceManager::loadShaderProgram(const GLchar* vShaderFile_,

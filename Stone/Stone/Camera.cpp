@@ -1,15 +1,24 @@
 #include "Camera.h"
+#include "Utility.h"
 
-const GLfloat	  YAW					=		-90.0f;
-const GLfloat	  PITCH					=		0.0f;
 const GLfloat	  SPEED					=		3.0f;
 const GLfloat	  SENSITIVITY		=		0.05f;
 const GLfloat	  FOVY					=		45.0f;
 
-
-Camera::Camera(GLfloat aspect_, const glm::vec3& eye_, const glm::vec3& up_)
-	:_aspect(aspect_), _initEye(eye_), _initUp(up_)
+Camera::Camera(GLfloat aspect_, const glm::vec3& eye_ /* = glm::vec3(0.0 , 0.0, 10.0)*/, 
+	const glm::vec3& center_ /* = glm::vec3(0.0f ,0.0f, 0.0f)*/,
+	const glm::vec3& up_ /* = glm::vec3(0.0f ,1.0f, 0.0f)*/)
+	:_aspect(aspect_), _eye(eye_), _center(center_)
 {
+	this->_fovy = FOVY;
+
+	this->_front = glm::normalize(_center - _eye);
+	this->_up = glm::normalize(up_);
+	this->_right = glm::cross(_front, _up);
+
+	this->_moveSpeed = SPEED;
+	this->_mouseSensitivity = SENSITIVITY;
+
 	this->_uboCreated = GL_FALSE;
 	init();
 }
@@ -17,7 +26,6 @@ Camera::Camera(GLfloat aspect_, const glm::vec3& eye_, const glm::vec3& up_)
 void Camera::resetCamera()
 {
 	init();
-	glCheckError();
 	this->updateUniformBuffer();
 	glCheckError();
 }
@@ -35,40 +43,35 @@ void Camera::processKeyboard(MoveDirection direction_, GLfloat deltaTime_)
 	}
 	else if (direction_ == LEFT)
 	{
-		this->_eye += this->_right * velocity;
+		this->_eye -= this->_right * velocity;
 	}
 	else if (direction_ == RIGHT)
 	{
-		this->_eye -= this->_right * velocity;
+		this->_eye += this->_right * velocity;
 	}
-	glCheckError();
 	this->updateUniformBuffer();
 	glCheckError();
 }
 
 void Camera::processMouseMove(GLfloat xOffset_, GLfloat yOffset_,
+	MouseMove state_,
 	GLboolean constraiPitch_ /* = true */)
 {
 	xOffset_ *= _mouseSensitivity;
 	yOffset_ *= _mouseSensitivity;
 
-	this->_yaw	-= xOffset_;
-	this->_pitch	+= yOffset_;
-
-	if (constraiPitch_)
+	if (state_ == ANGLE)
 	{
-		if (this->_pitch > 444.0f)
-		{
-			this->_pitch = 44.0f;
-		}
-		else if (this->_pitch < -44.0f)
-		{
-			this->_pitch = -44.0f;
-		}
+		mouseMoveView(xOffset_, yOffset_, constraiPitch_);
 	}
-	glCheckError();
+	else if (state_ == LENGTH)
+	{
+		mouseMoveLength(xOffset_, yOffset_);
+	}
+	
 	this->updateCameraVector();
 	this->updateUniformBuffer();
+
 	glCheckError();
 }
 
@@ -86,8 +89,8 @@ void Camera::processMouseScroll(GLfloat yOffset_)
 	{
 		this->_fovy = 1.0f;
 	}
-	glCheckError();
 	this->updateUniformBuffer();
+
 	glCheckError();
 }
 
@@ -101,29 +104,55 @@ void Camera::bindUniformBuffer(GLuint bindPoint_)
 		glBindBuffer(GL_UNIFORM_BUFFER, 0);
 		_uboCreated = GL_TRUE;
 	}
-	glCheckError();
 	glBindBufferRange(GL_UNIFORM_BUFFER, bindPoint_, _UBO, 0, 2 * sizeof(glm::mat4));
 	updateUniformBuffer();
+
 	glCheckError();
 }
 
 glm::vec3 Camera::getPosition() const
 {
-	return _eye;
+	return this->_eye;
 }
 
 bool Camera::init()
 {
-	this->_fovy = FOVY;
-	this->_yaw = YAW;
-	this->_pitch = PITCH;
-	this->_moveSpeed = SPEED;
-	this->_mouseSensitivity = SENSITIVITY;
-	this->_eye = _initEye;
-	this->_worldUp = _initUp;
-	this->_front = glm::vec3(0.0f, 0.0f, -1.0f);
-	this->updateCameraVector();
+	glm::vec3 curYaw(_front.x, 0.0f, _front.z);
+	if (std::abs(glm::length(curYaw)) > std::numeric_limits<float>::epsilon())
+	{
+		curYaw = glm::normalize(curYaw);
+	}
 
+	/* 计算水平旋转角 */
+	/* z为垂直轴，方向向下；x为水平轴，方向向右*/
+	if (curYaw.z > 0.0f)	// 下半圆
+	{
+		if (curYaw.x >= 0.0f)	//右下半圆
+		{
+			_yaw = 360.0f - glm::degrees(glm::asin(curYaw.z));
+		}
+		else   //左下半圆
+		{
+			_yaw = 180.0f + glm::degrees(glm::asin(curYaw.z));
+		}
+	}
+	else    //上半圆
+	{
+		if (curYaw.x >= 0.0f)	//右上半圆
+		{
+			_yaw = glm::degrees(glm::asin(-curYaw.z));
+		}
+		else    //左上半圆
+		{
+			_yaw = 90.0f + glm::degrees(glm::asin(-curYaw.z));
+		}
+	}
+
+	/* 计算垂直旋转角 */
+	_pitch = -glm::degrees(glm::asin(_front.y));
+
+	this->updateCameraVector();
+	glCheckError();
 	return true;
 }
 
@@ -139,25 +168,59 @@ glm::mat4 Camera::getProjectionMatrix() const
 
 void Camera::updateCameraVector()
 {
-	glm::vec3 front;
-	front.x = cos(glm::radians(_yaw)) * cos(glm::radians(_pitch));
-	front.y = sin(glm::radians(_pitch));
-	front.z = sin(glm::radians(_yaw)) * cos(glm::radians(_pitch));
-	this->_front = glm::normalize(front);
-	this->_right = glm::normalize(glm::cross(_front, _worldUp));
-	this->_up	   = glm::normalize(glm::cross(_right, _front));
+	const glm::vec3 vAxis(0.0f, 1.0f, 0.0f);
+
+	glm::vec3 view(1.0f, 0.0f, 0.0f);
+	view = rotate(vAxis, _yaw, view);
+	view = glm::normalize(view);
+
+	glm::vec3 hAxis = glm::cross(vAxis, view);
+	hAxis = glm::normalize(hAxis);
+	view = rotate(hAxis, _pitch, view);
+	view = glm::normalize(view);
+
+	_front = view;
+
+	_up = glm::cross(_front, hAxis);
+	_up = glm::normalize(_up);
+
+	_right = glm::cross(_front, _up);
+	_right = glm::normalize(_right);
+
+	glCheckError();
 }
 
 void Camera::updateUniformBuffer()
 {
 	glm::mat4 view = getViewMatrix();
 	glm::mat4 projection = getProjectionMatrix();
-	glCheckError();
 	glBindBuffer(GL_UNIFORM_BUFFER, this->_UBO);
-	glCheckError();
 	glBufferSubData(GL_UNIFORM_BUFFER, 0, sizeof(glm::mat4), glm::value_ptr(view));
-	glCheckError();
 	glBufferSubData(GL_UNIFORM_BUFFER, sizeof(glm::mat4), sizeof(projection), glm::value_ptr(projection));
 	glBindBuffer(GL_UNIFORM_BUFFER, 0);
+
 	glCheckError();
+}
+
+void Camera::mouseMoveView(GLfloat xOffset_, GLfloat yOffset_, GLboolean constraiPitch_)
+{
+	this->_yaw += xOffset_;
+	this->_pitch -= yOffset_;
+
+	if (!constraiPitch_)
+	{
+		if (this->_pitch > 89.0f)
+		{
+			this->_pitch = 89.0f;
+		}
+		else if (this->_pitch < -89.0f)
+		{
+			this->_pitch = -89.0f;
+		}
+	}
+}
+
+void Camera::mouseMoveLength(GLfloat xOffset_, GLfloat yOffset_)
+{
+	this->_eye -= glm::vec3(xOffset_, -yOffset_, 0);
 }

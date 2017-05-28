@@ -7,6 +7,7 @@ GLfloat		InputManager::s_mouseY = 0.0f;
 GLfloat		InputManager::s_deltaX	   = 0.0f;;	
 GLfloat		InputManager::s_deltaY    = 0.0f;;
 GLfloat		InputManager::s_mouseScroll = 0.0f;
+Camera::MouseMove InputManager::s_mouseMoveState = Camera::NONE;
 
 GLboolean InputManager::isKeyPressed(GLint key_)
 {
@@ -28,7 +29,7 @@ void InputManager::processKeyboard(GLint key_, GLint action_)
 	}
 }
 
-void InputManager::processMouseMove(GLfloat x_, GLint y_)
+void InputManager::processMouseMove(GLint x_, GLint y_)
 {
 	static bool firstMove = true;
 	if (firstMove)
