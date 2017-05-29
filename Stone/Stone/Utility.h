@@ -30,4 +30,6 @@
 //u：旋转轴；angle：旋转角度；v：被旋转向量
 glm::vec3 rotate(const glm::vec3& u_, float angle_, const glm::vec3& v_);
 
+glm::mat2x3 operator*(const glm::mat2x2& mat22_, const glm::mat2x3& mat23_);
+
 #endif

@@ -23,12 +23,12 @@ void NormalMap::init()
 {
 	_texture2D = ResourceManager::getInstance().getTexture2D("brickWall");
 	_normalTexture2D = ResourceManager::getInstance().getTexture2D("normalBrickWall");
-	_shaderProgram = ResourceManager::getInstance().getShaderProgram("simpleNormalMap");
+	_shaderProgram = ResourceManager::getInstance().getShaderProgram("normalMap2");
 
 	_plane = new Plane();
 	glm::mat4 model(1.0f);
-	model = glm::translate(model, glm::vec3(0.0, 0.0, -5.0));
-	//model = glm::rotate(model, 90.0f, glm::vec3(1.0f, 0.0f, 0.0f));
+	model = glm::translate(model, glm::vec3(0.0, -5.0, 0.0));
+	model = glm::rotate(model, -90.0f, glm::vec3(1.0f, 0.0f, 0.0f));
 	model = glm::scale(model, glm::vec3(5.0f));
 	_plane->setModelMatrix(model);
 	_plane->setTexture2D(std::vector < Texture2D > {_texture2D, _normalTexture2D},

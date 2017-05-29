@@ -47,6 +47,10 @@ void ResourceManager::initResource()
 		->setUniformBlockBind("Camera", CameraUniformBindPoint);
 	loadShaderProgram("shaders/advancedLight/normalMap/simpleNormalMap.vs", "shaders/advancedLight/normalMap/simpleNormalMap.frag", nullptr, "simpleNormalMap")
 		->setUniformBlockBind("Camera", CameraUniformBindPoint);
+	loadShaderProgram("shaders/advancedLight/normalMap/normalMap.vs", "shaders/advancedLight/normalMap/normalMap.frag", nullptr, "normalMap")
+		->setUniformBlockBind("Camera", CameraUniformBindPoint);
+	loadShaderProgram("shaders/advancedLight/normalMap/normalMap2.vs", "shaders/advancedLight/normalMap/normalMap2.frag", nullptr, "normalMap2")
+		->setUniformBlockBind("Camera", CameraUniformBindPoint);
 
 	loadTexture2D("resources/textures/moss/mossgrown_normal.png", GL_FALSE, "moss");
 	loadTexture2D("resources/textures/planet_textures/texture_earth_clouds.jpg", GL_FALSE, "earth");

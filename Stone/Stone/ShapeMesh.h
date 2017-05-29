@@ -10,6 +10,17 @@ class ShapeMesh
 	template<typename T>
 	friend class Mesh;
 public:
+	struct TangentSpace
+	{
+		glm::vec3 tangent;
+		glm::vec3 bitangent;
+
+		TangentSpace() = default;
+
+		TangentSpace(const glm::vec3& tangent_, const glm::vec3& bitangent_);
+	};
+
+public:
 	RenderInfo getRenderInfo();
 
 protected:
@@ -28,6 +39,8 @@ protected:
 
 	void setRenderData(const RenderData& renderData_);
 
+	void setTangentSpace(const std::vector<TangentSpace>& tangentSpaces_);
+
 protected:
 	ShapeMesh() = default;
 
@@ -38,7 +51,8 @@ private:
 	ShapeMesh& operator=(const ShapeMesh&) = delete;
 
 private:
-	RenderData _renderData;
+	RenderData								_renderData;
+	std::vector<TangentSpace>		_tangentSpaces;
 };
 
 #endif
