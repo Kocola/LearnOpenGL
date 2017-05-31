@@ -66,7 +66,6 @@ void HDR::initFBO()
 		GL_TEXTURE_2D,_colorTexture.getTextureID(), 0);
 	glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, 
 		GL_TEXTURE_2D, _depthTexture.getTextureID(), 0);
-	glCheckError();
 
 	if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
 	{

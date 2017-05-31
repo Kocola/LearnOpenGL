@@ -14,6 +14,8 @@ Texture2D::Texture2D(GLuint texture2D_)
 
 void Texture2D::generate(GLuint width_, GLuint height_, unsigned char* data_)
 {
+	glCheckError();
+
 	glGenTextures(1, &this->_textureID);
 	this->_width = width_;
 	this->_height = height_;
@@ -33,6 +35,8 @@ void Texture2D::generate(GLuint width_, GLuint height_, unsigned char* data_)
 	}
 
 	glBindTexture(GL_TEXTURE_2D, 0);
+
+	glCheckError();
 }
 
 void Texture2D::bind() const

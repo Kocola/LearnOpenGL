@@ -63,6 +63,10 @@ void ResourceManager::initResource()
 		->setUniformBlockBind("Camera", CameraUniformBindPoint);
 	loadShaderProgram("shaders/advancedLight/hdr/hdr.vs", "shaders/advancedLight/hdr/hdr.frag", nullptr, "hdr");
 	loadShaderProgram("shaders/advancedLight/hdr/hdr.vs", "shaders/advancedLight/hdr/exposureHdr.frag", nullptr, "exposureHdr");
+	loadShaderProgram("shaders/advancedLight/bloom/bloom.vs", "shaders/advancedLight/bloom/bloom.frag", nullptr, "bloom")
+		->setUniformBlockBind("Camera", CameraUniformBindPoint);
+	loadShaderProgram("shaders/advancedLight/bloom/blur.vs", "shaders/advancedLight/bloom/blur.frag", nullptr, "bloomBlur");
+	loadShaderProgram("shaders/advancedLight/bloom/blur.vs", "shaders/advancedLight/bloom/blend.frag", nullptr, "bloomBlend");
 
 	loadTexture2D("resources/textures/moss/mossgrown_normal.png", GL_FALSE, "normalMoss");
 	loadTexture2D("resources/textures/moss/mossgrown.png", GL_FALSE, "moss");
@@ -75,6 +79,7 @@ void ResourceManager::initResource()
 	loadTexture2D("resources/textures/parallaxMap/bricks2.jpg", GL_FALSE, "parallaxBricks");
 	loadTexture2D("resources/textures/parallaxMap/bricks2_depth.jpg", GL_FALSE, "parallaxBricksDepth");
 	loadTexture2D("resources/textures/parallaxMap/bricks2_normal.jpg", GL_FALSE, "parallaxBricksNormal");
+	loadTexture2D("resources/textures/white.jpg", GL_FALSE, "white");
 }
 
 ShaderProgram* ResourceManager::loadShaderProgram(const GLchar* vShaderFile_,

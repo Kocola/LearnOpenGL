@@ -169,6 +169,12 @@
     <Filter Include="源文件\课程主题\高动态范围">
       <UniqueIdentifier>{a588030d-3bc4-4718-9b4f-6f41171e1c2b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="头文件\课程主题\泛光">
+      <UniqueIdentifier>{ecbf8bda-7921-411d-8366-a2f17273ff73}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\课程主题\泛光">
+      <UniqueIdentifier>{97e67ab4-d807-4073-933c-f812efb893b4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Common.h">
@@ -270,6 +276,9 @@
     <ClInclude Include="HDR.h">
       <Filter>头文件\课程主题\高动态范围</Filter>
     </ClInclude>
+    <ClInclude Include="Bloom.h">
+      <Filter>头文件\课程主题\泛光</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp">
@@ -370,6 +379,9 @@
     </ClCompile>
     <ClCompile Include="HDR.cpp">
       <Filter>源文件\课程主题\高动态范围</Filter>
+    </ClCompile>
+    <ClCompile Include="Bloom.cpp">
+      <Filter>源文件\课程主题\泛光</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
