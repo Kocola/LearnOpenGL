@@ -46,10 +46,10 @@ void main()
 	vec3 viewDir = normalize(viewPos - worldPosition);
 	vec3 reflectDir = reflect(-lightDir, norm);
 	float spec = pow(max(dot(reflectDir, viewDir), 0.0f), shininess);
-	vec3 specular = lightColor.specular * spec * vec3(texture2D(tex, reverseY(texcoord)));
+	vec3 specular = lightColor.specular * spec * vec3(texture2D(tex, reverseY(texcoord))) * vec3(8.0f);
 	
 	vec3 result = ambient + diffuse + specular;
-	color = vec4(result, 1.0f);
+	color = vec4(vec3(result), 1.0f);
 }
 
 vec2 reverseY(vec2 texcoord)

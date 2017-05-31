@@ -1,0 +1,51 @@
+#version 330 core
+
+in VS_OUT
+{
+	vec3 position;
+	vec2 texcoord;
+	vec3 tangentLightPos;
+	vec3 tangentViewPos;
+	vec3 tangentPosition;
+}fs_in;
+
+uniform sampler2D diffuseMap;
+uniform sampler2D normalMap;
+uniform sampler2D depthMap;
+
+uniform float heightScale;
+
+out vec4 color;
+
+vec2 parallaxMap(vec2 texcoord, vec3 viewDir);
+
+void main()
+{
+	vec3 viewDir = normalize(fs_in.tangentViewPos - fs_in.tangentPosition);
+	vec2 texcoord = parallaxMap(fs_in.texcoord, viewDir);
+	
+	vec3 texColor = texture2D(diffuseMap, texcoord).rgb;
+	vec3 normal = texture2D(normalMap, texcoord).rgb;
+	normal = normalize(normal * 2.0f - 1.0f);
+	
+	vec3 ambient = 0.1 * texColor;
+	
+	vec3 lightDir = normalize(fs_in.tangentLightPos - fs_in.tangentPosition);
+	float diff = max(dot(lightDir, normal), 0.0f);
+	vec3 diffuse = diff * texColor;
+	
+	vec3 halfwayDir = normalize(lightDir + viewDir);
+	float spec = pow(max(dot(halfwayDir, normal), 0.0f), 32.0f);
+	vec3 specular = spec * vec3(0.2f);
+	
+	vec3 result = ambient + diffuse + specular;
+	
+	color = vec4(result, 1.0f);
+}
+
+vec2 parallaxMap(vec2 texcoord, vec3 viewDir)
+{
+	float height = texture2D(depthMap, texcoord).r;
+	vec2 p = viewDir.xy / viewDir.z * (height * heightScale);
+	return texcoord - p;
+}

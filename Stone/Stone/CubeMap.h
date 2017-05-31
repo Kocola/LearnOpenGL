@@ -1,4 +1,4 @@
-#ifndef					__CUBE_MAP_H__
+#ifndef				__CUBE_MAP_H__
 #define				__CUBE_MAP_H__
 
 #include <vector>

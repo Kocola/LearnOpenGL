@@ -94,7 +94,7 @@ void SunEarthMoon::initShaderProgram()
  	_depthShaderProgram.setUniformValue("far_plane", _farPlane);
  	_depthShaderProgram.setUniformValue("lightPos", _lightPos);
 
-	_shadowShaderProgram = ResourceManager::getInstance().getShaderProgram("pointShadow");
+	_shadowShaderProgram = ResourceManager::getInstance().getShaderProgram("pointShadow2");
  	_shadowShaderProgram.setUniformValue("lightPos", _lightPos);
  	_shadowShaderProgram.setUniformValue("far_plane", _farPlane);
 }
@@ -145,6 +145,7 @@ void SunEarthMoon::draw()
 	auto model = earthModel * moonModel;
 	_moon->setModelMatrix(sunModel * earthModel * moonModel);
 
+	earthModel = glm::rotate(earthModel, 90.0f, glm::vec3(1.0, 0.0, 0.0));
 	earthModel = glm::scale(sunModel * earthModel, glm::vec3(3.0f));
 	_earth->setModelMatrix(earthModel);
 

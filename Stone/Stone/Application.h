@@ -10,6 +10,10 @@ class Application
 public:
 	Application(int width_, int height_, const char* winName_ = "´°¿Ú");
 
+	virtual ~Application()
+	{
+	}
+
 public:
 	void exec();
 

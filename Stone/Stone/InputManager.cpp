@@ -8,10 +8,16 @@ GLfloat		InputManager::s_deltaX	   = 0.0f;;
 GLfloat		InputManager::s_deltaY    = 0.0f;;
 GLfloat		InputManager::s_mouseScroll = 0.0f;
 Camera::MouseMove InputManager::s_mouseMoveState = Camera::NONE;
+GLboolean InputManager::s_isPause = GL_FALSE;
 
 GLboolean InputManager::isKeyPressed(GLint key_)
 {
 	return s_keyPressed[key_];
+}
+
+void InputManager::pressSpaceKey()
+{
+	s_isPause = !s_isPause;
 }
 
 void InputManager::processKeyboard(GLint key_, GLint action_)

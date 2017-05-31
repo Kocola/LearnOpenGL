@@ -13,23 +13,11 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="头文件\数字化石碑">
-      <UniqueIdentifier>{70882677-5112-4d32-a6ea-543b86cef16e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="源文件\数字化石碑">
-      <UniqueIdentifier>{63244a4d-6fed-45ed-81a5-71de104cb5c8}</UniqueIdentifier>
-    </Filter>
     <Filter Include="头文件\单例">
       <UniqueIdentifier>{3e318c20-f647-46c8-aa15-ac07db6eec84}</UniqueIdentifier>
     </Filter>
     <Filter Include="源文件\单例">
       <UniqueIdentifier>{8e60e335-9038-43df-b40c-333b3866f10c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="源文件\数字化石碑\模型文件">
-      <UniqueIdentifier>{66775941-1b26-4866-a774-16bc5626a124}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="头文件\数字化石碑\模型文件">
-      <UniqueIdentifier>{c08aa1ee-f922-40d6-b5e4-ca143ede5e8e}</UniqueIdentifier>
     </Filter>
     <Filter Include="头文件\计时器">
       <UniqueIdentifier>{547dc764-89d4-4e17-83ff-768e5e59d878}</UniqueIdentifier>
@@ -72,12 +60,6 @@
     </Filter>
     <Filter Include="源文件\单例\输入管理器">
       <UniqueIdentifier>{5963e029-5eb5-4954-9e7a-ce5c1172340f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="头文件\数字化石碑\平面拟合">
-      <UniqueIdentifier>{62d25f0f-c2bd-4c71-aef3-1d0cec86dc67}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="源文件\数字化石碑\平面拟合">
-      <UniqueIdentifier>{ac4b62a1-f5dc-45bf-b707-02d00e4786ea}</UniqueIdentifier>
     </Filter>
     <Filter Include="头文件\渲染系统\几何物体">
       <UniqueIdentifier>{de9f6fb5-9a27-442f-a506-0a780404df63}</UniqueIdentifier>
@@ -157,6 +139,36 @@
     <Filter Include="源文件\算法">
       <UniqueIdentifier>{6d35cd73-7eef-43b3-a54c-90e1854a9e06}</UniqueIdentifier>
     </Filter>
+    <Filter Include="头文件\课程主题\视差贴图">
+      <UniqueIdentifier>{2ea54363-38cd-480a-bdf0-f6914320e2fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\课程主题\视差贴图">
+      <UniqueIdentifier>{d6b3706d-8a2b-4323-a558-4f554ac8e9db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\课程主题\数字化石碑">
+      <UniqueIdentifier>{63244a4d-6fed-45ed-81a5-71de104cb5c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\课程主题\数字化石碑\模型文件">
+      <UniqueIdentifier>{66775941-1b26-4866-a774-16bc5626a124}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\课程主题\数字化石碑\平面拟合">
+      <UniqueIdentifier>{ac4b62a1-f5dc-45bf-b707-02d00e4786ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\课程主题\数字化石碑">
+      <UniqueIdentifier>{70882677-5112-4d32-a6ea-543b86cef16e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\课程主题\数字化石碑\模型文件">
+      <UniqueIdentifier>{c08aa1ee-f922-40d6-b5e4-ca143ede5e8e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\课程主题\数字化石碑\平面拟合">
+      <UniqueIdentifier>{62d25f0f-c2bd-4c71-aef3-1d0cec86dc67}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\课程主题\高动态范围">
+      <UniqueIdentifier>{37f30df4-d42d-4ecd-89f8-f50e2c920958}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\课程主题\高动态范围">
+      <UniqueIdentifier>{a588030d-3bc4-4718-9b4f-6f41171e1c2b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Common.h">
@@ -166,7 +178,7 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="StealRubb.h">
-      <Filter>头文件\数字化石碑</Filter>
+      <Filter>头文件\课程主题\数字化石碑</Filter>
     </ClInclude>
     <ClInclude Include="Singleton.h">
       <Filter>头文件\单例</Filter>
@@ -175,7 +187,7 @@
       <Filter>头文件\计时器</Filter>
     </ClInclude>
     <ClInclude Include="ModelFile.h">
-      <Filter>头文件\数字化石碑\模型文件</Filter>
+      <Filter>头文件\课程主题\数字化石碑\模型文件</Filter>
     </ClInclude>
     <ClInclude Include="ShaderProgram.h">
       <Filter>头文件\渲染系统\着色器程序</Filter>
@@ -193,7 +205,7 @@
       <Filter>头文件\单例\输入管理器</Filter>
     </ClInclude>
     <ClInclude Include="PlaneFit.h">
-      <Filter>头文件\数字化石碑\平面拟合</Filter>
+      <Filter>头文件\课程主题\数字化石碑\平面拟合</Filter>
     </ClInclude>
     <ClInclude Include="Shape.h">
       <Filter>头文件\渲染系统\几何物体</Filter>
@@ -249,11 +261,14 @@
     <ClInclude Include="NormalMap.h">
       <Filter>头文件\课程主题\法线贴图</Filter>
     </ClInclude>
-    <ClInclude Include="AdvancedCamera.h">
-      <Filter>头文件\摄像机</Filter>
-    </ClInclude>
     <ClInclude Include="Utility.h">
       <Filter>头文件\算法</Filter>
+    </ClInclude>
+    <ClInclude Include="ParallaxMap.h">
+      <Filter>头文件\课程主题\视差贴图</Filter>
+    </ClInclude>
+    <ClInclude Include="HDR.h">
+      <Filter>头文件\课程主题\高动态范围</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -264,7 +279,7 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="StelaRubb.cpp">
-      <Filter>源文件\数字化石碑</Filter>
+      <Filter>源文件\课程主题\数字化石碑</Filter>
     </ClCompile>
     <ClCompile Include="Singleton.cpp">
       <Filter>源文件\单例</Filter>
@@ -273,7 +288,7 @@
       <Filter>源文件\计时器</Filter>
     </ClCompile>
     <ClCompile Include="ModelFile.cpp">
-      <Filter>源文件\数字化石碑\模型文件</Filter>
+      <Filter>源文件\课程主题\数字化石碑\模型文件</Filter>
     </ClCompile>
     <ClCompile Include="ShaderProgram.cpp">
       <Filter>源文件\渲染系统\着色器程序</Filter>
@@ -294,7 +309,7 @@
       <Filter>源文件\单例\输入管理器</Filter>
     </ClCompile>
     <ClCompile Include="PlaneFit.cpp">
-      <Filter>源文件\数字化石碑\平面拟合</Filter>
+      <Filter>源文件\课程主题\数字化石碑\平面拟合</Filter>
     </ClCompile>
     <ClCompile Include="Shape.cpp">
       <Filter>源文件\渲染系统\几何物体</Filter>
@@ -349,6 +364,12 @@
     </ClCompile>
     <ClCompile Include="Utility.cpp">
       <Filter>源文件\算法</Filter>
+    </ClCompile>
+    <ClCompile Include="ParallaxMap.cpp">
+      <Filter>源文件\课程主题\视差贴图</Filter>
+    </ClCompile>
+    <ClCompile Include="HDR.cpp">
+      <Filter>源文件\课程主题\高动态范围</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

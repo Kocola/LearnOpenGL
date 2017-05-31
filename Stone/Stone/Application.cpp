@@ -31,11 +31,14 @@ void Application::exec()
 
 	while (!glfwWindowShouldClose(_window))
 	{
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
-		static Timer timer;
 		glfwPollEvents();
-		processInput(timer.calcInvertal());
-		draw();
+ 		if (InputManager::s_isPause == GL_FALSE)
+		{
+		 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
+			static Timer timer; 
+			processInput(timer.calcInvertal());
+			draw();
+		}
 		glfwSwapBuffers(_window);
 		sleep();
 	}
@@ -97,6 +100,7 @@ bool Application::initGlew()
 bool Application::initRender()
 {
 	glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+	//glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 
 	int width, height;
 	glfwGetFramebufferSize(_window, &width, &height);
@@ -163,6 +167,12 @@ void Application::keyCallback(GLFWwindow* window_, int key_, int scancode_,
 	if (key_ == GLFW_KEY_ESCAPE && action_ == GLFW_PRESS)
 	{
 		glfwSetWindowShouldClose(window_, GL_TRUE);
+	}
+
+	//当用户按下SPACE键时，暂停渲染过程，再次按下，继续渲染
+	if (key_ == GLFW_KEY_SPACE && action_ == GLFW_PRESS)
+	{
+		InputManager::pressSpaceKey();
 	}
 
 	InputManager::getInstance().processKeyboard(key_, action_);

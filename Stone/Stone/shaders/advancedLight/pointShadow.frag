@@ -28,7 +28,7 @@ void main()
 	vec3 normal = normalize(fs_in.Normal) * reverseNormal;
 	vec3 lightColor = vec3(1.0f);
 	//环境光
-	vec3 ambient = 0.1 * color;
+	vec3 ambient = 0.05 * color;
 	//漫反射光
 	vec3 lightDir = normalize(lightPos - fs_in.FragPos);
 	float diff = max(dot(lightDir, normal), 0.0f);
@@ -57,25 +57,9 @@ float shadowCalculation(vec3 fragPos)
 	float closeDepth = texture(depthMap, fragToLight).r;
 	closeDepth *= far_plane;
 	float currentDepth = length(fragToLight);
-	float shadow = 0.0;
-	float bias = 0.05;
-	float samples = 4.0;
-	float offset = 0.1;
-	for(float x = -offset; x < offset; x += offset / (samples * 0.5))
-	{
-		for(float y = -offset; y < offset; y += offset / (samples * 0.5))
-		{
-			for(float z = -offset; z < offset; z += offset / (samples * 0.5))
-			{
-				float closeDepth = texture(depthMap, fragToLight + vec3(x, y, z)).r;
-				closeDepth *= far_plane;
-				if(currentDepth - bias > closeDepth)
-				{
-					shadow += 1.0;
-				}
-			}
-		}
-	}
-	shadow /= (samples * samples * samples);
+	float bias = 0.00;
+	
+	float shadow = currentDepth - bias > closeDepth ? 1.0 : 0.0;
+
 	return shadow;
 }

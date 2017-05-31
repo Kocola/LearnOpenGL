@@ -19,8 +19,12 @@ RenderInfo ShapeMesh::getRenderInfo()
 
 	auto vertexDataSize = this->_renderData.vertexs.size()
 		* sizeof(this->_renderData.vertexs[0]);
-	auto tangentSpaceDataSize = this->_tangentSpaces.size()
-		* sizeof(this->_tangentSpaces[0]);
+	auto tangentSpaceDataSize = 0;
+	if (!this->_tangentSpaces.empty())
+	{
+		tangentSpaceDataSize = this->_tangentSpaces.size()
+			* sizeof(this->_tangentSpaces[0]);
+	}
 
 	GLuint VBO;
 	glGenBuffers(1, &VBO);
@@ -29,8 +33,6 @@ RenderInfo ShapeMesh::getRenderInfo()
 		nullptr, GL_STATIC_DRAW);
 
 	glBufferSubData(GL_ARRAY_BUFFER, 0, vertexDataSize, &this->_renderData.vertexs[0]);
-	glBufferSubData(GL_ARRAY_BUFFER, vertexDataSize, tangentSpaceDataSize,
-		&this->_tangentSpaces[0]);
 	//Vertex相关数据在shader中使用固定的layout
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex),BUFFER_OFFSET(0));
 	glEnableVertexAttribArray(0);
@@ -39,13 +41,18 @@ RenderInfo ShapeMesh::getRenderInfo()
 	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), BUFFER_OFFSET(offsetof(Vertex, texCoord)));
 	glEnableVertexAttribArray(2);
 
-	// 加入切线空间    ----    2017.5.29
-	glVertexAttribPointer(3, 3, GL_FLOAT, GL_FALSE, sizeof(TangentSpace), BUFFER_OFFSET(vertexDataSize));
-	glEnableVertexAttribArray(3);
-	glVertexAttribPointer(4, 3, GL_FLOAT, GL_FALSE, sizeof(TangentSpace), BUFFER_OFFSET(vertexDataSize + 
-		offsetof(TangentSpace, bitangent)));
- 	glEnableVertexAttribArray(4);
-
+	if (tangentSpaceDataSize != 0)
+	{
+		glBufferSubData(GL_ARRAY_BUFFER, vertexDataSize, tangentSpaceDataSize,
+			&this->_tangentSpaces[0]);
+		// 加入切线空间    ----    2017.5.29
+		glVertexAttribPointer(3, 3, GL_FLOAT, GL_FALSE, sizeof(TangentSpace), BUFFER_OFFSET(vertexDataSize));
+		glEnableVertexAttribArray(3);
+		glVertexAttribPointer(4, 3, GL_FLOAT, GL_FALSE, sizeof(TangentSpace), BUFFER_OFFSET(vertexDataSize +
+			offsetof(TangentSpace, bitangent)));
+		glEnableVertexAttribArray(4);
+	}
+	
 // 	std::cout << "----------" << "VAO : " << VAO
 // 		<< ", VBO : " << VBO << std::endl;
 

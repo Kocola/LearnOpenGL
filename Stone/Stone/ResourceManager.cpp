@@ -45,20 +45,36 @@ void ResourceManager::initResource()
 		//->setUniformBlockBind("Camera", CameraUniformBindPoint);
 	loadShaderProgram("shaders/advancedLight/pointShadow.vs", "shaders/advancedLight/pointShadow.frag", nullptr, "pointShadow")
 		->setUniformBlockBind("Camera", CameraUniformBindPoint);
+	loadShaderProgram("shaders/advancedLight/pointShadow.vs", "shaders/advancedLight/pointShadow2.frag", nullptr, "pointShadow2")
+		->setUniformBlockBind("Camera", CameraUniformBindPoint);
 	loadShaderProgram("shaders/advancedLight/normalMap/simpleNormalMap.vs", "shaders/advancedLight/normalMap/simpleNormalMap.frag", nullptr, "simpleNormalMap")
 		->setUniformBlockBind("Camera", CameraUniformBindPoint);
 	loadShaderProgram("shaders/advancedLight/normalMap/normalMap.vs", "shaders/advancedLight/normalMap/normalMap.frag", nullptr, "normalMap")
 		->setUniformBlockBind("Camera", CameraUniformBindPoint);
 	loadShaderProgram("shaders/advancedLight/normalMap/normalMap2.vs", "shaders/advancedLight/normalMap/normalMap2.frag", nullptr, "normalMap2")
 		->setUniformBlockBind("Camera", CameraUniformBindPoint);
+	loadShaderProgram("shaders/advancedLight/parallaxMap/parallaxMap.vs", "shaders/advancedLight/parallaxMap/parallaxMap.frag", nullptr, "parallaxMap")
+		->setUniformBlockBind("Camera", CameraUniformBindPoint);
+	loadShaderProgram("shaders/advancedLight/parallaxMap/parallaxMap.vs", "shaders/advancedLight/parallaxMap/steepParallaxMap.frag", nullptr, "steepParallaxMap")
+		->setUniformBlockBind("Camera", CameraUniformBindPoint);
+	loadShaderProgram("shaders/advancedLight/parallaxMap/parallaxMap.vs", "shaders/advancedLight/parallaxMap/steepParallaxMap2.frag", nullptr, "steepParallaxMap2")
+		->setUniformBlockBind("Camera", CameraUniformBindPoint);
+	loadShaderProgram("shaders/advancedLight/parallaxMap/parallaxMap.vs", "shaders/advancedLight/parallaxMap/parallaxOcclusionMap.frag", nullptr, "parallaxOcclusionMap")
+		->setUniformBlockBind("Camera", CameraUniformBindPoint);
+	loadShaderProgram("shaders/advancedLight/hdr/hdr.vs", "shaders/advancedLight/hdr/hdr.frag", nullptr, "hdr");
+	loadShaderProgram("shaders/advancedLight/hdr/hdr.vs", "shaders/advancedLight/hdr/exposureHdr.frag", nullptr, "exposureHdr");
 
-	loadTexture2D("resources/textures/moss/mossgrown_normal.png", GL_FALSE, "moss");
+	loadTexture2D("resources/textures/moss/mossgrown_normal.png", GL_FALSE, "normalMoss");
+	loadTexture2D("resources/textures/moss/mossgrown.png", GL_FALSE, "moss");
 	loadTexture2D("resources/textures/planet_textures/texture_earth_clouds.jpg", GL_FALSE, "earth");
 	loadTexture2D("resources/textures/planet_textures/texture_sun.jpg", GL_FALSE, "sun");
 	loadTexture2D("resources/textures/planet_textures/texture_moon.jpg", GL_FALSE, "moon");
 	loadCubeMap("resources/textures/skybox/", GL_FALSE, "cubemap");
 	loadTexture2D("resources/textures/normalMap/brickwall.jpg", GL_FALSE, "brickWall");
 	loadTexture2D("resources/textures/normalMap/brickwall_normal.jpg", GL_FALSE, "normalBrickWall");
+	loadTexture2D("resources/textures/parallaxMap/bricks2.jpg", GL_FALSE, "parallaxBricks");
+	loadTexture2D("resources/textures/parallaxMap/bricks2_depth.jpg", GL_FALSE, "parallaxBricksDepth");
+	loadTexture2D("resources/textures/parallaxMap/bricks2_normal.jpg", GL_FALSE, "parallaxBricksNormal");
 }
 
 ShaderProgram* ResourceManager::loadShaderProgram(const GLchar* vShaderFile_,
@@ -227,7 +243,6 @@ Texture2D ResourceManager::loadTextureFromFile(const GLchar* path_,
 CubeMap ResourceManager::loadCubeMapFromFile(const GLchar* path_, GLboolean alpha_)
 {
 	CubeMap cubeMap;
-
 	if (alpha_)
 	{
 		cubeMap.setInternalFormat(GL_RGBA);
