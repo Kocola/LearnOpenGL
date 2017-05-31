@@ -39,6 +39,7 @@ private:
 private:
 	GLuint				_hdrFBO;
 	Texture2D			_colorTexture;
+	Texture2D			_depthTexture;
 	float					_exposure;
 	ShaderProgram	_hdrShaderProgram;
 	PointLight			_pointLight;
