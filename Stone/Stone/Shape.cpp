@@ -53,7 +53,9 @@ void Shape::draw()
 		glActiveTexture(GL_TEXTURE0 + i);
 		_texture2Ds[i].bind();
 	}
+	glCheckError();
 	render();
+	glCheckError();
 	for (int i = 0; i < _texture2Ds.size(); ++i)
 	{
 		_texture2Ds[i].release();

@@ -18,6 +18,7 @@
     <ClInclude Include="Cube.h" />
     <ClInclude Include="CubeMap.h" />
     <ClInclude Include="CubeMesh.h" />
+    <ClInclude Include="DeferedRender.h" />
     <ClInclude Include="DirectionalLight.h" />
     <ClInclude Include="HDR.h" />
     <ClInclude Include="InputManager.h" />
@@ -54,6 +55,7 @@
     <ClCompile Include="Cube.cpp" />
     <ClCompile Include="CubeMap.cpp" />
     <ClCompile Include="CubeMesh.cpp" />
+    <ClCompile Include="DeferedRender.cpp" />
     <ClCompile Include="DirectionalLight.cpp" />
     <ClCompile Include="HDR.cpp" />
     <ClCompile Include="InputManager.cpp" />
@@ -86,7 +88,7 @@
     <ProjectGuid>{BEA02094-7D55-41FC-B096-8DEDCDEA8115}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>Stone</RootNamespace>
-    <ProjectName>Shadow</ProjectName>
+    <ProjectName>LearnOpenGL</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

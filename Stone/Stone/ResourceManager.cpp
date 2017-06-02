@@ -67,9 +67,15 @@ void ResourceManager::initResource()
 		->setUniformBlockBind("Camera", CameraUniformBindPoint);
 	loadShaderProgram("shaders/advancedLight/bloom/blur.vs", "shaders/advancedLight/bloom/blur.frag", nullptr, "bloomBlur");
 	loadShaderProgram("shaders/advancedLight/bloom/blur.vs", "shaders/advancedLight/bloom/blend.frag", nullptr, "bloomBlend");
+	loadShaderProgram("shaders/advancedLight/deferedRender/deferedRender.vs", "shaders/advancedLight/deferedRender/deferedRender.frag", nullptr, "deferedRender")
+		->setUniformBlockBind("Camera", CameraUniformBindPoint);
+	loadShaderProgram("shaders/advancedLight/deferedRender/deferedRenderLight.vs", "shaders/advancedLight/deferedRender/deferedRenderLight.frag", nullptr, "deferedRenderLight");
+	loadShaderProgram("shaders/advancedLight/deferedRender/deferedRenderLight2.vs", "shaders/advancedLight/deferedRender/deferedRenderLight2.frag", nullptr, "deferedRenderLight2")
+		->setUniformBlockBind("Camera", CameraUniformBindPoint);
 
 	loadTexture2D("resources/textures/moss/mossgrown_normal.png", GL_FALSE, "normalMoss");
 	loadTexture2D("resources/textures/moss/mossgrown.png", GL_FALSE, "moss");
+	loadTexture2D("resources/textures/moss/mossgrown_specular.png", GL_FALSE, "specularMoss");
 	loadTexture2D("resources/textures/planet_textures/texture_earth_clouds.jpg", GL_FALSE, "earth");
 	loadTexture2D("resources/textures/planet_textures/texture_sun.jpg", GL_FALSE, "sun");
 	loadTexture2D("resources/textures/planet_textures/texture_moon.jpg", GL_FALSE, "moon");

@@ -175,6 +175,12 @@
     <Filter Include="源文件\课程主题\泛光">
       <UniqueIdentifier>{97e67ab4-d807-4073-933c-f812efb893b4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="头文件\课程主题\延迟渲染">
+      <UniqueIdentifier>{f4f45836-4d3e-40c4-935e-85b39386d686}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\课程主题\延迟渲染">
+      <UniqueIdentifier>{85f3eeaa-e196-476d-9e5d-092de3394711}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Common.h">
@@ -279,6 +285,9 @@
     <ClInclude Include="Bloom.h">
       <Filter>头文件\课程主题\泛光</Filter>
     </ClInclude>
+    <ClInclude Include="DeferedRender.h">
+      <Filter>头文件\课程主题\延迟渲染</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp">
@@ -382,6 +391,9 @@
     </ClCompile>
     <ClCompile Include="Bloom.cpp">
       <Filter>源文件\课程主题\泛光</Filter>
+    </ClCompile>
+    <ClCompile Include="DeferedRender.cpp">
+      <Filter>源文件\课程主题\延迟渲染</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

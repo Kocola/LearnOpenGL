@@ -18,7 +18,7 @@
 #include <string>
 
 const int SCREEN_WIDTH = 1024;
-const int SCREEN_HEIGHT = 1024;
+const int SCREEN_HEIGHT = 768;
 
 const int SHADOW_WIDTH = 1024;
 const int SHADOW_HEIGHT = 1024;
@@ -83,8 +83,13 @@ struct Image
 };
 
 //¼ì²âµ÷ÓÃOpenGLº¯Êý²úÉúµÄ´íÎó
-GLenum glCheckError_(const char* file_, int line);
+GLenum glCheckError_(const char* file_, int line_);
 
 #define glCheckError()	glCheckError_(__FILE__, __LINE__)
+
+//¼ì²âÖ¡»º³å×´Ì¬
+GLenum checkFrameBufferStatus_(const char* file_, int line_);
+
+#define checkFrameBufferStatus() checkFrameBufferStatus_(__FILE__, __LINE__)
 
 #endif
