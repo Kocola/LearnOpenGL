@@ -29,7 +29,7 @@ public:
 public:
 	Camera() = default;
 
-	Camera(GLfloat aspect_, const glm::vec3& eye_ = glm::vec3(0.0, 0.0, 40.0),
+	Camera(GLfloat aspect_, const glm::vec3& eye_ = glm::vec3(0.0, 0.0, 5.0),
 		const glm::vec3& center_ = glm::vec3(0.0f ,0.0f, 0.0f),
 		const glm::vec3& up_ = glm::vec3(0.0f, 1.0f, 0.0f));
 

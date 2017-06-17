@@ -4,11 +4,13 @@
 #include "HDR.h"
 #include "NormalMap.h"
 #include "ParallaxMap.h"
+#include "PBR.h"
 #include "SunEarthMoon.h"
+#include "StelaRubb.h"
 
 int main(int argc, char* argv[])
 {
-	Application* app = new DenderedRender();
+	Application* app = new PBR();
 	app->exec();
 
 	return 0;

@@ -26,6 +26,7 @@
     <ClInclude Include="Mesh.h" />
     <ClInclude Include="NormalMap.h" />
     <ClInclude Include="ParallaxMap.h" />
+    <ClInclude Include="PBR.h" />
     <ClInclude Include="Plane.h" />
     <ClInclude Include="PlaneMesh.h" />
     <ClInclude Include="PointLight.h" />
@@ -39,7 +40,7 @@
     <ClInclude Include="Sphere.h" />
     <ClInclude Include="SphereMesh.h" />
     <ClInclude Include="SpotLight.h" />
-    <ClInclude Include="StealRubb.h" />
+    <ClInclude Include="StelaRubb.h" />
     <ClInclude Include="Singleton.h" />
     <ClInclude Include="SunEarthMoon.h" />
     <ClInclude Include="Test.h" />
@@ -64,6 +65,7 @@
     <ClCompile Include="ModelFile.cpp" />
     <ClCompile Include="NormalMap.cpp" />
     <ClCompile Include="ParallaxMap.cpp" />
+    <ClCompile Include="PBR.cpp" />
     <ClCompile Include="Plane.cpp" />
     <ClCompile Include="PlaneFit.cpp" />
     <ClCompile Include="PlaneMesh.cpp" />

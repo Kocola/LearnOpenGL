@@ -39,7 +39,6 @@ void main()
 		float distance = length(lights[i].position - position);
 		float attenuation = 1.0f / (1.0f + lights[i].linear * distance + 
 			lights[i].quadratic * distance * distance);
-		//attenuation = 1.0f;
 			
 		lighting += attenuation * albedo * vec3(0.1) * lights[i].color;	//»·¾³¹â
 	

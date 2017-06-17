@@ -23,7 +23,7 @@ const int SCREEN_HEIGHT = 768;
 const int SHADOW_WIDTH = 1024;
 const int SHADOW_HEIGHT = 1024;
 
-const GLuint CameraUniformBindPoint = 1;
+const GLuint CAMERA_UNIFORM_BIND_POINT = 1;
 
 #define BUFFER_OFFSET(offset) (GLvoid*)(offset)
 

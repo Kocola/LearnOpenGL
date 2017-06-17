@@ -2,61 +2,37 @@
 
 #include "Common.h"
 #include "ModelFile.h"
+#include "Plane.h"
 #include "PlaneFit.h"
 #include "ResourceManager.h"
-#include "StealRubb.h"
+#include "StelaRubb.h"
 #include "Timer.h"
 
 StelaRubb::StelaRubb()
 	:Application(SCREEN_WIDTH, SCREEN_HEIGHT, "StelaRubb")
 	,_modelMatrix(glm::mat4(1.0f))
 {
-	//init();
+	init();
 	initVertex();
 	bindVertex();
 }
 
+
+StelaRubb::~StelaRubb()
+{
+	if (_plane != nullptr)
+	{
+		delete _plane;
+		_plane = nullptr;
+	}
+}
+
 bool StelaRubb::init()
 {
-	GLfloat vertices[] = {
-		-0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
-		0.5f, -0.5f, 0.0f,	1.0f, 0.0f,
-		0.5f, 0.5f, 0.0f,	1.0f, 1.0f,
-		//-0.5f, -0.5f, 0.0f,
-		//0.5f, 0.5f, 0.0f,
-		-0.5f, 0.5f, 0.0f,	0.0f, 1.0f
-		
-	};
-
-	GLuint indices[] = {
-		0, 1, 2,
-		2, 3, 0
-	};
-
-	glCheckError();
-
-	glGenVertexArrays(1, &this->_VAO);
-	glBindVertexArray(this->_VAO);
-
-	GLuint VBO;
-	glGenBuffers(1, &VBO);
-	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), &vertices[0], GL_STATIC_DRAW);
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(GL_FLOAT), BUFFER_OFFSET(0));
-	glEnableVertexAttribArray(0);
-	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(GL_FLOAT), BUFFER_OFFSET(3 * sizeof(GL_FLOAT)));
-	glEnableVertexAttribArray(1);
-	
-	GLuint VEO;
-	glGenBuffers(1, &VEO);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, VEO);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), &indices[0], GL_STATIC_DRAW);
-	
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
-	glBindVertexArray(0);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
-	//glDeleteBuffers(1, &VBO);	//绑定了VAO，这里仅相当于调用glBindBuffers(0);
-	glCheckError();
+	initTexture();
+	initFBO();
+	initShaderProgram();
+	initShape();
 
 	return true;
 }
@@ -73,7 +49,7 @@ bool StelaRubb::initVertex()
 	PlaneFit planeFit(1, 1, _points, _faces);
 	this->_colors		= planeFit.calcPointColor();
 
-	//this->setZ(0.0f);
+	this->setZ(0.0f);		//设置Z坐标为0，这样整个碑面会显示在z = 0的平面上
 	_modelMatrix = calcModelMatrix(planeFit);
 //	this->_colors = std::vector<glm::vec3>(_points.size(), glm::vec3(0.0, 0.0, 0.0));
 	std::cout << "----------" << "数据处理耗时：" << timer.calcInvertal()
@@ -134,18 +110,8 @@ glm::mat4 StelaRubb::calcModelMatrix(const PlaneFit& planeFit_)
 	return model;
 }
 
-void StelaRubb::draw()
+void StelaRubb::draw1()
 {
-// 	auto texture = ResourceManager::getInstance().getTexture2DPointer("moss");
-// 	texture->bind();
-// 	auto pShader = ResourceManager::getInstance().getShaderProgramPointer("basic");
-// 	pShader->bind();
-// 	glBindVertexArray(this->_VAO);
-// 	/*glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, this->VEO);*/
-// 	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-// 	//glDrawArrays(GL_TRIANGLES, 0, 6);
-// 	glBindVertexArray(0);
-
 	static bool isFirst = true;
 	static Timer timer;
 
@@ -171,4 +137,122 @@ void StelaRubb::draw()
 	}
 
 	isFirst = false;
+}
+
+void StelaRubb::initTexture()
+{
+	glCheckError();
+
+	//初始化颜色纹理
+	_colorTexture.setDataType(GL_FLOAT);
+	_colorTexture.setInternalFormat(GL_RGB16F);
+	_colorTexture.setImageFormat(GL_RGB);
+	//_colorMap.setWrapType(GL_CLAMP_TO_BORDER);
+	_colorTexture.generate(SCREEN_WIDTH, SCREEN_HEIGHT, nullptr);
+
+	//初始化深度纹理
+	_depthTexture.setDataType(GL_FLOAT);
+	_depthTexture.setInternalFormat(GL_DEPTH_COMPONENT);
+	_depthTexture.setImageFormat(GL_DEPTH_COMPONENT);
+	_depthTexture.setWrapType(GL_CLAMP_TO_BORDER);
+	_depthTexture.generate(SCREEN_WIDTH, SCREEN_HEIGHT, nullptr);
+
+	glCheckError();
+}
+
+void StelaRubb::initFBO()
+{
+	glCheckError();
+
+	glGenFramebuffers(1, &_FBO);
+	glBindFramebuffer(GL_FRAMEBUFFER, _FBO);
+	glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0,
+		GL_TEXTURE_2D, _colorTexture.getTextureID(), 0);
+	glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT,
+		GL_TEXTURE_2D, _depthTexture.getTextureID(), 0);
+
+	checkFrameBufferStatus();
+
+	glBindFramebuffer(GL_FRAMEBUFFER, 0);
+
+	glCheckError();
+}
+
+void StelaRubb::initShaderProgram()
+{
+	_postProcessShaderProgram = ResourceManager::getInstance().getShaderProgram(
+		"stelaRubbPostProcess");
+}
+
+void StelaRubb::initShape()
+{
+	glCheckError();
+
+	_plane = new Plane();
+
+	glCheckError();
+}
+
+void StelaRubb::firstDraw()
+{
+	glCheckError();
+
+	glBindFramebuffer(GL_FRAMEBUFFER, _FBO);
+	glViewport(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+	glEnable(GL_DEPTH_TEST);
+	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+	static bool isFirst = true;
+	static Timer timer;
+
+	if (isFirst)
+	{
+		timer.start();
+	}
+
+	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+
+	auto pShader = ResourceManager::getInstance().getShaderProgramPointer("stelaRubb");
+	pShader->setUniformValue("model", _modelMatrix);
+	pShader->use();
+	glBindVertexArray(this->_VAO);
+	glDrawElements(GL_TRIANGLES, _faces.size() * 3, GL_UNSIGNED_INT, 0);
+	glBindVertexArray(0);
+	pShader->release();
+
+	if (isFirst)
+	{
+		std::cout << "----------" << "渲染耗时：" << timer.calcInvertal()
+			<< "----------" << std::endl;
+	}
+
+	isFirst = false;
+
+	glBindFramebuffer(GL_FRAMEBUFFER, 0);
+
+	glCheckError();
+}
+
+void StelaRubb::secondDraw()
+{
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	glDisable(GL_DEPTH_TEST);
+	
+	_plane->setShaderProgram(_postProcessShaderProgram);
+	_plane->setTexture2D(_colorTexture, "colorTexture");
+	_plane->draw();
+
+	glEnable(GL_DEPTH_TEST); 
+}
+
+void StelaRubb::draw()
+{
+	glCheckError();
+
+	firstDraw();
+
+	secondDraw();
+
+	glCheckError();
 }

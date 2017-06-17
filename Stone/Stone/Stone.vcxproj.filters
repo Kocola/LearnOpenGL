@@ -181,6 +181,9 @@
     <Filter Include="源文件\课程主题\延迟渲染">
       <UniqueIdentifier>{85f3eeaa-e196-476d-9e5d-092de3394711}</UniqueIdentifier>
     </Filter>
+    <Filter Include="头文件\课程主题\基于物理的渲染">
+      <UniqueIdentifier>{08b145ed-eefd-4257-ab5a-2cfa0df9182a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Common.h">
@@ -188,9 +191,6 @@
     </ClInclude>
     <ClInclude Include="Application.h">
       <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="StealRubb.h">
-      <Filter>头文件\课程主题\数字化石碑</Filter>
     </ClInclude>
     <ClInclude Include="Singleton.h">
       <Filter>头文件\单例</Filter>
@@ -287,6 +287,12 @@
     </ClInclude>
     <ClInclude Include="DeferedRender.h">
       <Filter>头文件\课程主题\延迟渲染</Filter>
+    </ClInclude>
+    <ClInclude Include="StelaRubb.h">
+      <Filter>头文件\课程主题\数字化石碑</Filter>
+    </ClInclude>
+    <ClInclude Include="PBR.h">
+      <Filter>头文件\课程主题\基于物理的渲染</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -394,6 +400,9 @@
     </ClCompile>
     <ClCompile Include="DeferedRender.cpp">
       <Filter>源文件\课程主题\延迟渲染</Filter>
+    </ClCompile>
+    <ClCompile Include="PBR.cpp">
+      <Filter>头文件\课程主题\基于物理的渲染</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

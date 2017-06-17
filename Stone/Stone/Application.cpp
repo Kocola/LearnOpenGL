@@ -99,8 +99,8 @@ bool Application::initGlew()
 
 bool Application::initRender()
 {
-	//glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+	glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+	//glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 
 	int width, height;
 	glfwGetFramebufferSize(_window, &width, &height);
@@ -111,7 +111,7 @@ bool Application::initRender()
 	glCheckError();
 
 	_camera = Camera((float)width / (float)height);
-	_camera.bindUniformBuffer(CameraUniformBindPoint);
+	_camera.bindUniformBuffer(CAMERA_UNIFORM_BIND_POINT);
 	
 	return true;
 }

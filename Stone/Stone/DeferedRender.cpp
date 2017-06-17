@@ -210,8 +210,8 @@ void DenderedRender::firstDraw()
 void DenderedRender::secondDraw()
 {
 	//commonSecondDraw();
-	//lightVolumnSecondDraw();
-	stencilLightVolumnSecondDraw();
+	lightVolumnSecondDraw();
+	//stencilLightVolumnSecondDraw();
 }
 
 void DenderedRender::commonSecondDraw()

@@ -15,63 +15,66 @@ std::map<std::string, CubeMap> ResourceManager::s_cubeMap;
 void ResourceManager::initResource()
 {
 	loadShaderProgram("shaders/basic.vs", "shaders/basic.frag", nullptr, "basic")
-		->setUniformBlockBind("Camera", CameraUniformBindPoint);
+		->setUniformBlockBind("Camera", CAMERA_UNIFORM_BIND_POINT);
 	loadShaderProgram("shaders/stelaRubb.vs", "shaders/stelaRubb.frag", nullptr, "stelaRubb")
-		->setUniformBlockBind("Camera", CameraUniformBindPoint);
+		->setUniformBlockBind("Camera", CAMERA_UNIFORM_BIND_POINT);
 	loadShaderProgram("shaders/light/basic.vs", "shaders/light/lightSource.frag", nullptr, "lightSource")
-		->setUniformBlockBind("Camera", CameraUniformBindPoint);
+		->setUniformBlockBind("Camera", CAMERA_UNIFORM_BIND_POINT);
 	loadShaderProgram("shaders/light/basic.vs", "shaders/light/basicLight.frag", nullptr, "basicLight")
-		->setUniformBlockBind("Camera", CameraUniformBindPoint);
+		->setUniformBlockBind("Camera", CAMERA_UNIFORM_BIND_POINT);
 	loadShaderProgram("shaders/light/basic.vs", "shaders/light/pointLight.frag", nullptr, "pointLight")
-		->setUniformBlockBind("Camera", CameraUniformBindPoint);
+		->setUniformBlockBind("Camera", CAMERA_UNIFORM_BIND_POINT);
 	loadShaderProgram("shaders/light/basic.vs", "shaders/light/directionalLight.frag", nullptr, "directionalLight")
-		->setUniformBlockBind("Camera", CameraUniformBindPoint);
+		->setUniformBlockBind("Camera", CAMERA_UNIFORM_BIND_POINT);
 	loadShaderProgram("shaders/light/basic.vs", "shaders/light/spotLight.frag", nullptr, "spotLight")
-		->setUniformBlockBind("Camera", CameraUniformBindPoint);
+		->setUniformBlockBind("Camera", CAMERA_UNIFORM_BIND_POINT);
 	loadShaderProgram("shaders/advancedOpenGL/depth.vs", "shaders/advancedOpenGL/depth.frag", nullptr, "depth")
-		->setUniformBlockBind("Camera", CameraUniformBindPoint);
+		->setUniformBlockBind("Camera", CAMERA_UNIFORM_BIND_POINT);
 	loadShaderProgram("shaders/advancedOpenGL/depth.vs", "shaders/advancedOpenGL/linearDepth.frag", nullptr, "linearDepth")
-		->setUniformBlockBind("Camera", CameraUniformBindPoint);
+		->setUniformBlockBind("Camera", CAMERA_UNIFORM_BIND_POINT);
 	loadShaderProgram("shaders/advancedOpenGL/stencil.vs", "shaders/advancedOpenGL/stencil.frag", nullptr, "stencil")
-		->setUniformBlockBind("Camera", CameraUniformBindPoint);
+		->setUniformBlockBind("Camera", CAMERA_UNIFORM_BIND_POINT);
 	loadShaderProgram("shaders/advancedOpenGL/framebuffer.vs", "shaders/advancedOpenGL/framebuffer.frag", nullptr, "framebuffer");
 		//->setUniformBlockBind("Camera", CameraUniformBindPoint);
 	loadShaderProgram("shaders/advancedOpenGL/cubeMap.vs", "shaders/advancedOpenGL/cubeMap.frag", nullptr, "skybox")
-		->setUniformBlockBind("Camera", CameraUniformBindPoint);
+		->setUniformBlockBind("Camera", CAMERA_UNIFORM_BIND_POINT);
 	loadShaderProgram("shaders/advancedOpenGL/simpleDepth.vs", "shaders/advancedOpenGL/simpleDepth.frag", nullptr, "simpleDepth"); 
 	loadShaderProgram("shaders/advancedOpenGL/simpleShadow.vs", "shaders/advancedOpenGL/simpleShadow.frag", nullptr, "simpleShadow")
-		->setUniformBlockBind("Camera", CameraUniformBindPoint);
+		->setUniformBlockBind("Camera", CAMERA_UNIFORM_BIND_POINT);
 	loadShaderProgram("shaders/advancedLight/pointDepth.vs", "shaders/advancedLight/pointDepth.frag", "shaders/advancedLight/pointDepth.gs", "pointDepth");
 		//->setUniformBlockBind("Camera", CameraUniformBindPoint);
 	loadShaderProgram("shaders/advancedLight/pointShadow.vs", "shaders/advancedLight/pointShadow.frag", nullptr, "pointShadow")
-		->setUniformBlockBind("Camera", CameraUniformBindPoint);
+		->setUniformBlockBind("Camera", CAMERA_UNIFORM_BIND_POINT);
 	loadShaderProgram("shaders/advancedLight/pointShadow.vs", "shaders/advancedLight/pointShadow2.frag", nullptr, "pointShadow2")
-		->setUniformBlockBind("Camera", CameraUniformBindPoint);
+		->setUniformBlockBind("Camera", CAMERA_UNIFORM_BIND_POINT);
 	loadShaderProgram("shaders/advancedLight/normalMap/simpleNormalMap.vs", "shaders/advancedLight/normalMap/simpleNormalMap.frag", nullptr, "simpleNormalMap")
-		->setUniformBlockBind("Camera", CameraUniformBindPoint);
+		->setUniformBlockBind("Camera", CAMERA_UNIFORM_BIND_POINT);
 	loadShaderProgram("shaders/advancedLight/normalMap/normalMap.vs", "shaders/advancedLight/normalMap/normalMap.frag", nullptr, "normalMap")
-		->setUniformBlockBind("Camera", CameraUniformBindPoint);
+		->setUniformBlockBind("Camera", CAMERA_UNIFORM_BIND_POINT);
 	loadShaderProgram("shaders/advancedLight/normalMap/normalMap2.vs", "shaders/advancedLight/normalMap/normalMap2.frag", nullptr, "normalMap2")
-		->setUniformBlockBind("Camera", CameraUniformBindPoint);
+		->setUniformBlockBind("Camera", CAMERA_UNIFORM_BIND_POINT);
 	loadShaderProgram("shaders/advancedLight/parallaxMap/parallaxMap.vs", "shaders/advancedLight/parallaxMap/parallaxMap.frag", nullptr, "parallaxMap")
-		->setUniformBlockBind("Camera", CameraUniformBindPoint);
+		->setUniformBlockBind("Camera", CAMERA_UNIFORM_BIND_POINT);
 	loadShaderProgram("shaders/advancedLight/parallaxMap/parallaxMap.vs", "shaders/advancedLight/parallaxMap/steepParallaxMap.frag", nullptr, "steepParallaxMap")
-		->setUniformBlockBind("Camera", CameraUniformBindPoint);
+		->setUniformBlockBind("Camera", CAMERA_UNIFORM_BIND_POINT);
 	loadShaderProgram("shaders/advancedLight/parallaxMap/parallaxMap.vs", "shaders/advancedLight/parallaxMap/steepParallaxMap2.frag", nullptr, "steepParallaxMap2")
-		->setUniformBlockBind("Camera", CameraUniformBindPoint);
+		->setUniformBlockBind("Camera", CAMERA_UNIFORM_BIND_POINT);
 	loadShaderProgram("shaders/advancedLight/parallaxMap/parallaxMap.vs", "shaders/advancedLight/parallaxMap/parallaxOcclusionMap.frag", nullptr, "parallaxOcclusionMap")
-		->setUniformBlockBind("Camera", CameraUniformBindPoint);
+		->setUniformBlockBind("Camera", CAMERA_UNIFORM_BIND_POINT);
 	loadShaderProgram("shaders/advancedLight/hdr/hdr.vs", "shaders/advancedLight/hdr/hdr.frag", nullptr, "hdr");
 	loadShaderProgram("shaders/advancedLight/hdr/hdr.vs", "shaders/advancedLight/hdr/exposureHdr.frag", nullptr, "exposureHdr");
 	loadShaderProgram("shaders/advancedLight/bloom/bloom.vs", "shaders/advancedLight/bloom/bloom.frag", nullptr, "bloom")
-		->setUniformBlockBind("Camera", CameraUniformBindPoint);
+		->setUniformBlockBind("Camera", CAMERA_UNIFORM_BIND_POINT);
 	loadShaderProgram("shaders/advancedLight/bloom/blur.vs", "shaders/advancedLight/bloom/blur.frag", nullptr, "bloomBlur");
 	loadShaderProgram("shaders/advancedLight/bloom/blur.vs", "shaders/advancedLight/bloom/blend.frag", nullptr, "bloomBlend");
 	loadShaderProgram("shaders/advancedLight/deferedRender/deferedRender.vs", "shaders/advancedLight/deferedRender/deferedRender.frag", nullptr, "deferedRender")
-		->setUniformBlockBind("Camera", CameraUniformBindPoint);
+		->setUniformBlockBind("Camera", CAMERA_UNIFORM_BIND_POINT);
 	loadShaderProgram("shaders/advancedLight/deferedRender/deferedRenderLight.vs", "shaders/advancedLight/deferedRender/deferedRenderLight.frag", nullptr, "deferedRenderLight");
 	loadShaderProgram("shaders/advancedLight/deferedRender/deferedRenderLight2.vs", "shaders/advancedLight/deferedRender/deferedRenderLight2.frag", nullptr, "deferedRenderLight2")
-		->setUniformBlockBind("Camera", CameraUniformBindPoint);
+		->setUniformBlockBind("Camera", CAMERA_UNIFORM_BIND_POINT);
+	loadShaderProgram("shaders/stelaRubb/stelaRubbPostProcess.vs", "shaders/stelaRubb/stelaRubbPostProcess.frag", nullptr, "stelaRubbPostProcess");
+	loadShaderProgram("shaders/pbr/pbr.vs", "shaders/pbr/pbr1.frag", nullptr, "pbr1")->setUniformBlockBind("Camera", CAMERA_UNIFORM_BIND_POINT);
+	loadShaderProgram("shaders/pbr/pbr.vs", "shaders/pbr/pbr2.frag", nullptr, "pbr2")->setUniformBlockBind("Camera", CAMERA_UNIFORM_BIND_POINT);
 
 	loadTexture2D("resources/textures/moss/mossgrown_normal.png", GL_FALSE, "normalMoss");
 	loadTexture2D("resources/textures/moss/mossgrown.png", GL_FALSE, "moss");
@@ -86,6 +89,9 @@ void ResourceManager::initResource()
 	loadTexture2D("resources/textures/parallaxMap/bricks2_depth.jpg", GL_FALSE, "parallaxBricksDepth");
 	loadTexture2D("resources/textures/parallaxMap/bricks2_normal.jpg", GL_FALSE, "parallaxBricksNormal");
 	loadTexture2D("resources/textures/white.jpg", GL_FALSE, "white");
+	loadTexture2D("resources/textures/pbr/rustediron2_basecolor.png", GL_FALSE, "pbrAlbedo");
+	loadTexture2D("resources/textures/pbr/rustediron2_metallic.png", GL_FALSE, "pbrMetallic");
+	loadTexture2D("resources/textures/pbr/rustediron2_normal.png", GL_FALSE, "pbrNormal");
 }
 
 ShaderProgram* ResourceManager::loadShaderProgram(const GLchar* vShaderFile_,
