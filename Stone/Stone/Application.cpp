@@ -65,6 +65,11 @@ bool Application::initWindow(int width_, int height_,
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 	glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 
+	//初始化调试输出上下文
+	//在调试上下文中使用OpenGL会明显缓慢一点，因此在优化或者发布程序
+	//之前，应将这一GLFW调试请求给注释掉
+	glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, GL_TRUE);
+
 	_window = glfwCreateWindow(width_, height_, winName_, 0, 0);
 	if (_window == nullptr)
 	{
@@ -94,6 +99,27 @@ bool Application::initGlew()
 		std::cout << "Failed to initalize GLEW" << std::endl;
 		return false;
 	}
+	//消除glewInit()设置的GL_INVALID_ENUM的错误标记
+	glGetError();
+
+	GLint flags;
+	glGetIntegerv(GL_CONTEXT_FLAGS, &flags);
+	if (flags & GL_CONTEXT_FLAG_DEBUG_BIT)
+	{
+		std::cout << "初始化调试成功!" << std::endl;
+	}
+
+	glEnable(GL_DEBUG_OUTPUT);
+	glEnable(GL_DEBUG_OUTPUT_SYNCHRONOUS);
+	glDebugMessageCallback(glDebugOutput, nullptr);
+	//过滤调试输出
+	glDebugMessageControl(GL_DEBUG_SOURCE_API,
+		GL_DEBUG_TYPE_ERROR,
+		GL_DEBUG_SEVERITY_HIGH,
+		0, nullptr, GL_TRUE);
+
+	//设置调试回调
+
 	return true;
 }
 

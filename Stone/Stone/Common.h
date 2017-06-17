@@ -92,4 +92,7 @@ GLenum checkFrameBufferStatus_(const char* file_, int line_);
 
 #define checkFrameBufferStatus() checkFrameBufferStatus_(__FILE__, __LINE__)
 
+//µ÷ÊÔÊä³ö
+void GLAPIENTRY glDebugOutput(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar* message, const GLvoid* useParam);
+
 #endif
