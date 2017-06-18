@@ -5,6 +5,7 @@
 #include "Common.h"
 #include "InputManager.h"
 #include "ResourceManager.h"
+#include "Text.h"
 #include "Timer.h"
 
 Application::Application(int width_, int height_,
@@ -29,18 +30,27 @@ void Application::exec()
 	glEnable(GL_STENCIL_TEST);	//开启模板测试
 	//glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE);
 
+	float lastTime = 0.0f;
 	while (!glfwWindowShouldClose(_window))
 	{
-		glfwPollEvents();
+		lastTime = glfwGetTime();
+
  		if (InputManager::s_isPause == GL_FALSE)
 		{
 		 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 			static Timer timer; 
 			processInput(timer.calcInvertal());
 			draw();
+			showFPS();
 		}
+		glfwPollEvents();
 		glfwSwapBuffers(_window);
-		sleep();
+
+		float curTime = glfwGetTime();
+		float deltaTime = curTime - lastTime;
+		double sleepTime = 1000 * 1.0 / _fps  -deltaTime;
+		sleepTime = sleepTime > 0 ? sleepTime : 0;
+		Sleep(sleepTime);
 	}
 	exit();
 }
@@ -133,6 +143,7 @@ bool Application::initRender()
 	glViewport(0, 0, width, height);
 
 	ResourceManager::getInstance().initResource();
+	Text::getInstance()->init();
 
 	glCheckError();
 
@@ -145,14 +156,6 @@ bool Application::initRender()
 void Application::exit()
 {
 	glfwTerminate();
-}
-
-void Application::sleep()
-{
-	static Timer timer;
-	double sleepTime = 1.0 / _fps - timer.calcInvertal();
-	sleepTime = sleepTime > 0 ? sleepTime : 0;
-	Sleep(sleepTime * 1000);
 }
 
 void Application::processInput(GLfloat dt)
@@ -231,4 +234,23 @@ void Application::mouseButtonCallback(GLFWwindow* window, int button,
 	{
 		InputManager::s_mouseMoveState = Camera::LENGTH;
 	}
+}
+
+void Application::showFPS()
+{
+	//添加刷新帧率的信息
+	static float lastFPSTime = 0.0f;
+	static int count = 0;
+	static float deltaTime = 0.0f;
+	float curFPSTime = glfwGetTime();
+	if (count % 10 == 0)	//每10帧更新一次FPS信息
+	{
+		deltaTime = curFPSTime - lastFPSTime;
+		count = 0;
+	}
+	lastFPSTime = curFPSTime;
+	std::string fpsInfo = "FPS : " + std::to_string(int(1.0f / deltaTime + 0.5));
+	Text::getInstance()->renderText(fpsInfo, glm::vec2(0.0f, 20.0f), 1.0f,
+		glm::vec3(1.0f));
+	count++;
 }

@@ -75,6 +75,7 @@ void ResourceManager::initResource()
 	loadShaderProgram("shaders/stelaRubb/stelaRubbPostProcess.vs", "shaders/stelaRubb/stelaRubbPostProcess.frag", nullptr, "stelaRubbPostProcess");
 	loadShaderProgram("shaders/pbr/pbr.vs", "shaders/pbr/pbr1.frag", nullptr, "pbr1")->setUniformBlockBind("Camera", CAMERA_UNIFORM_BIND_POINT);
 	loadShaderProgram("shaders/pbr/pbr.vs", "shaders/pbr/pbr2.frag", nullptr, "pbr2")->setUniformBlockBind("Camera", CAMERA_UNIFORM_BIND_POINT);
+	loadShaderProgram("shaders/font/font.vs", "shaders/font/font.frag", nullptr, "font");
 
 	loadTexture2D("resources/textures/moss/mossgrown_normal.png", GL_FALSE, "normalMoss");
 	loadTexture2D("resources/textures/moss/mossgrown.png", GL_FALSE, "moss");

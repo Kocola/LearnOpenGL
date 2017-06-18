@@ -37,9 +37,9 @@ private:
 
 	void exit();
 
-	void sleep();
-
 	void processInput(GLfloat dt);
+
+	void showFPS();
 
 private:
 	static void keyCallback(GLFWwindow* window_, int key_, int scancode_,

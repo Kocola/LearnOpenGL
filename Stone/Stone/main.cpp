@@ -10,7 +10,7 @@
 
 int main(int argc, char* argv[])
 {
-	Application* app = new PBR();
+	Application* app = new SunEarthMoon();
 	app->exec();
 
 	return 0;
