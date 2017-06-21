@@ -30,6 +30,10 @@ public:
 public:
 	void setUniformValue(const GLchar* name_, GLfloat value_);
 
+	void setUniformValue(const GLchar* name_, GLsizei vectorLen_, GLsizei count_, const GLfloat* values_);
+
+	void setUniformValue(const GLchar* name_, GLsizei vectorLen_, GLsizei count_, const GLint* values_);
+
 	void setUniformValue(const GLchar* name_, GLint value_);
 
 	void setUniformValue(const GLchar* name_, GLfloat x_, GLfloat y_);

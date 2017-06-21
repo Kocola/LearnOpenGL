@@ -34,14 +34,8 @@
     <Filter Include="源文件\渲染系统\着色器程序">
       <UniqueIdentifier>{756137a0-a346-47bd-aa66-6f73f6819452}</UniqueIdentifier>
     </Filter>
-    <Filter Include="头文件\单例\资源管理器">
-      <UniqueIdentifier>{46bcb5a3-f7d6-4c5e-b316-fe33a89be312}</UniqueIdentifier>
-    </Filter>
     <Filter Include="源文件\计时器">
       <UniqueIdentifier>{8f3b6dcf-3375-4815-b279-4931c56e5b69}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="源文件\单例\资源管理器">
-      <UniqueIdentifier>{f21b4a7c-5cc5-448c-99cf-279289c73d6e}</UniqueIdentifier>
     </Filter>
     <Filter Include="头文件\渲染系统\纹理">
       <UniqueIdentifier>{c4a719f7-39d8-4fd2-8376-b938c5a5930f}</UniqueIdentifier>
@@ -54,12 +48,6 @@
     </Filter>
     <Filter Include="源文件\摄像机">
       <UniqueIdentifier>{57abae54-4d25-4291-af58-81c035904a94}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="头文件\单例\输入管理器">
-      <UniqueIdentifier>{0d7c42bc-8ce4-468f-bd9a-ffba9a9e8b82}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="源文件\单例\输入管理器">
-      <UniqueIdentifier>{5963e029-5eb5-4954-9e7a-ce5c1172340f}</UniqueIdentifier>
     </Filter>
     <Filter Include="头文件\渲染系统\几何物体">
       <UniqueIdentifier>{de9f6fb5-9a27-442f-a506-0a780404df63}</UniqueIdentifier>
@@ -184,6 +172,81 @@
     <Filter Include="头文件\课程主题\基于物理的渲染">
       <UniqueIdentifier>{08b145ed-eefd-4257-ab5a-2cfa0df9182a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="源文件\课程主题\PBR">
+      <UniqueIdentifier>{1ac9a8d2-28e4-4ff3-946c-a81a37450a19}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\文本">
+      <UniqueIdentifier>{aead7d90-c2d4-4bdd-a296-e1d03427d759}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\文本">
+      <UniqueIdentifier>{4dafc90a-5e7b-448b-805d-7e03abb28e8b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\输入管理器">
+      <UniqueIdentifier>{0d7c42bc-8ce4-468f-bd9a-ffba9a9e8b82}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\资源管理器">
+      <UniqueIdentifier>{46bcb5a3-f7d6-4c5e-b316-fe33a89be312}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\输入管理器">
+      <UniqueIdentifier>{5963e029-5eb5-4954-9e7a-ce5c1172340f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\资源管理器">
+      <UniqueIdentifier>{f21b4a7c-5cc5-448c-99cf-279289c73d6e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\课程主题\Breakout">
+      <UniqueIdentifier>{ce44a788-5d7d-424d-9c0c-dec9c6955450}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\课程主题\Breakout\精灵">
+      <UniqueIdentifier>{9bd33457-54f0-4b11-affd-3a208d5b4b57}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\课程主题\Breakout">
+      <UniqueIdentifier>{4eca309f-3665-42f2-9cbb-733e688d5790}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\课程主题\Breakout\精灵">
+      <UniqueIdentifier>{ce752706-76e8-4aab-9f9d-e4a124ff0acc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\课程主题\Breakout\关卡">
+      <UniqueIdentifier>{2ca37d8b-a790-4273-94c8-ce548ddf9c05}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\课程主题\Breakout\关卡">
+      <UniqueIdentifier>{65204430-2736-4450-8605-949f44cc8c1e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\课程主题\Breakout\物体">
+      <UniqueIdentifier>{524dfa5d-28dd-4997-bdaa-0ab467331d19}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\课程主题\Breakout\物体">
+      <UniqueIdentifier>{23513b7c-779f-43b3-b709-d23f0c42c94d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\课程主题\Breakout\物体\球">
+      <UniqueIdentifier>{6b29d69b-195f-4ec3-9cb8-a340ba525945}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\课程主题\Breakout\物体\球">
+      <UniqueIdentifier>{56ea8019-c1d7-4833-9d11-2857342cd728}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\课程主题\Breakout\功能">
+      <UniqueIdentifier>{62b61434-de70-4b88-89c5-55caa09cf583}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\课程主题\Breakout\功能">
+      <UniqueIdentifier>{5f36f234-5346-40be-8aa9-bdb6312df427}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\课程主题\Breakout\粒子">
+      <UniqueIdentifier>{7d0accbf-5148-473a-a085-3be76c9caa35}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\课程主题\Breakout\粒子">
+      <UniqueIdentifier>{bd880f0f-7559-40f4-947a-4f50a5e9c5c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\课程主题\Breakout\粒子\粒子发射器">
+      <UniqueIdentifier>{ac97dda9-ab25-4f3c-94e5-a8de84a698dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\课程主题\Breakout\粒子\粒子发射器">
+      <UniqueIdentifier>{9dace779-ebeb-48c5-b455-b9cfda0ce9b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\课程主题\Breakout\后期处理">
+      <UniqueIdentifier>{12c1e1c2-2e00-4323-85d8-3b27189ce152}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\课程主题\Breakout\后期处理">
+      <UniqueIdentifier>{559cc2e9-0e2b-402d-a9fa-1d7936e15ece}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Common.h">
@@ -205,7 +268,7 @@
       <Filter>头文件\渲染系统\着色器程序</Filter>
     </ClInclude>
     <ClInclude Include="ResourceManager.h">
-      <Filter>头文件\单例\资源管理器</Filter>
+      <Filter>头文件\资源管理器</Filter>
     </ClInclude>
     <ClInclude Include="Texture2D.h">
       <Filter>头文件\渲染系统\纹理</Filter>
@@ -214,7 +277,7 @@
       <Filter>头文件\摄像机</Filter>
     </ClInclude>
     <ClInclude Include="InputManager.h">
-      <Filter>头文件\单例\输入管理器</Filter>
+      <Filter>头文件\输入管理器</Filter>
     </ClInclude>
     <ClInclude Include="PlaneFit.h">
       <Filter>头文件\课程主题\数字化石碑\平面拟合</Filter>
@@ -294,6 +357,36 @@
     <ClInclude Include="PBR.h">
       <Filter>头文件\课程主题\基于物理的渲染</Filter>
     </ClInclude>
+    <ClInclude Include="Text.h">
+      <Filter>头文件\文本</Filter>
+    </ClInclude>
+    <ClInclude Include="Sprite.h">
+      <Filter>头文件\课程主题\Breakout\精灵</Filter>
+    </ClInclude>
+    <ClInclude Include="Breakout.h">
+      <Filter>头文件\课程主题\Breakout</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLevel.h">
+      <Filter>头文件\课程主题\Breakout\关卡</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>头文件\课程主题\Breakout\物体</Filter>
+    </ClInclude>
+    <ClInclude Include="BallObject.h">
+      <Filter>头文件\课程主题\Breakout\物体\球</Filter>
+    </ClInclude>
+    <ClInclude Include="Util.h">
+      <Filter>头文件\课程主题\Breakout\功能</Filter>
+    </ClInclude>
+    <ClInclude Include="Particle.h">
+      <Filter>头文件\课程主题\Breakout\粒子</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleGenerator.h">
+      <Filter>头文件\课程主题\Breakout\粒子\粒子发射器</Filter>
+    </ClInclude>
+    <ClInclude Include="PostProcessor.h">
+      <Filter>头文件\课程主题\Breakout\后期处理</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp">
@@ -318,7 +411,7 @@
       <Filter>源文件\渲染系统\着色器程序</Filter>
     </ClCompile>
     <ClCompile Include="ResourceManager.cpp">
-      <Filter>源文件\单例\资源管理器</Filter>
+      <Filter>源文件\资源管理器</Filter>
     </ClCompile>
     <ClCompile Include="Common.cpp">
       <Filter>源文件</Filter>
@@ -330,7 +423,7 @@
       <Filter>源文件\摄像机</Filter>
     </ClCompile>
     <ClCompile Include="InputManager.cpp">
-      <Filter>源文件\单例\输入管理器</Filter>
+      <Filter>源文件\输入管理器</Filter>
     </ClCompile>
     <ClCompile Include="PlaneFit.cpp">
       <Filter>源文件\课程主题\数字化石碑\平面拟合</Filter>
@@ -402,7 +495,37 @@
       <Filter>源文件\课程主题\延迟渲染</Filter>
     </ClCompile>
     <ClCompile Include="PBR.cpp">
-      <Filter>头文件\课程主题\基于物理的渲染</Filter>
+      <Filter>源文件\课程主题\PBR</Filter>
+    </ClCompile>
+    <ClCompile Include="Text.cpp">
+      <Filter>源文件\文本</Filter>
+    </ClCompile>
+    <ClCompile Include="Sprite.cpp">
+      <Filter>源文件\课程主题\Breakout\精灵</Filter>
+    </ClCompile>
+    <ClCompile Include="Breakout.cpp">
+      <Filter>源文件\课程主题\Breakout</Filter>
+    </ClCompile>
+    <ClCompile Include="GameLevel.cpp">
+      <Filter>源文件\课程主题\Breakout\关卡</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>源文件\课程主题\Breakout\物体</Filter>
+    </ClCompile>
+    <ClCompile Include="BallObject.cpp">
+      <Filter>源文件\课程主题\Breakout\物体\球</Filter>
+    </ClCompile>
+    <ClCompile Include="Util.cpp">
+      <Filter>源文件\课程主题\Breakout\功能</Filter>
+    </ClCompile>
+    <ClCompile Include="Particle.cpp">
+      <Filter>源文件\课程主题\Breakout\粒子</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleGeneratorcpp.cpp">
+      <Filter>源文件\课程主题\Breakout\粒子\粒子发射器</Filter>
+    </ClCompile>
+    <ClCompile Include="PostProcessor.cpp">
+      <Filter>源文件\课程主题\Breakout\后期处理</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

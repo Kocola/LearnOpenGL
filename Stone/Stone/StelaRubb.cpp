@@ -41,7 +41,7 @@ bool StelaRubb::initVertex()
 {
 	Timer timer;
 	timer.start();
-	ModelFile modelFile("../file/360w.ply");
+	ModelFile modelFile("../file/2800W2.ply");
 	this->_points		= modelFile.readVertexs();
 	this->_faces		= modelFile.readFaces();
 	std::cout << "----------" << "打开模型耗时：" << timer.calcInvertal()
@@ -107,6 +107,7 @@ glm::mat4 StelaRubb::calcModelMatrix(const PlaneFit& planeFit_)
 	glm::mat4 model;
 	model = glm::translate(model, glm::vec3(-xOffset, -yOffset, 0.0f));
 //	model = glm::translate(model, glm::vec3(-planeFit_._maxX, -planeFit_._maxY, 0.0f));
+	//model = glm::rotate(model, 30.0f, glm::vec3(1.0, 0.0, 0.0));
 	return model;
 }
 

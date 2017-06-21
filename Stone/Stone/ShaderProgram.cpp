@@ -154,6 +154,34 @@ void ShaderProgram::setUniformValue(const GLchar* name_, GLfloat value_)
 	glUniform1f(location, value_);
 }
 
+void ShaderProgram::setUniformValue(const GLchar* name_, GLsizei vectorLen_, GLsizei count_,
+	const GLfloat* values_)
+{
+	auto location = uniformLocation(name_);
+	if (vectorLen_ == 1)
+	{
+		glUniform1fv(location, count_, values_);
+	}
+	else if (vectorLen_ == 2)
+	{
+		glUniform2fv(location, count_, values_);
+	}
+}
+
+void ShaderProgram::setUniformValue(const GLchar* name_, GLsizei vectorLen_, GLsizei count_,
+	const GLint* values_)
+{
+	auto location = uniformLocation(name_);
+	if (vectorLen_ == 1)
+	{
+		glUniform1iv(location, count_, values_);
+	}
+	else if (vectorLen_ == 2)
+	{
+		glUniform2iv(location, count_, values_);
+	}
+}
+
 void ShaderProgram::setUniformValue(const GLchar* name_, GLfloat x_, GLfloat y_)
 {
 	auto location = uniformLocation(name_);

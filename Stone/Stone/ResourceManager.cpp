@@ -76,6 +76,9 @@ void ResourceManager::initResource()
 	loadShaderProgram("shaders/pbr/pbr.vs", "shaders/pbr/pbr1.frag", nullptr, "pbr1")->setUniformBlockBind("Camera", CAMERA_UNIFORM_BIND_POINT);
 	loadShaderProgram("shaders/pbr/pbr.vs", "shaders/pbr/pbr2.frag", nullptr, "pbr2")->setUniformBlockBind("Camera", CAMERA_UNIFORM_BIND_POINT);
 	loadShaderProgram("shaders/font/font.vs", "shaders/font/font.frag", nullptr, "font");
+	loadShaderProgram("shaders/sprite/sprite.vs", "shaders/sprite/sprite.frag", nullptr, "sprite");
+	loadShaderProgram("shaders/particle/particle.vs", "shaders/particle/particle.frag", nullptr, "particle");
+	loadShaderProgram("shaders/breakout/postprocess.vs", "shaders/breakout/postprocess.frag", nullptr, "breakoutPostprocess");
 
 	loadTexture2D("resources/textures/moss/mossgrown_normal.png", GL_FALSE, "normalMoss");
 	loadTexture2D("resources/textures/moss/mossgrown.png", GL_FALSE, "moss");
@@ -93,6 +96,12 @@ void ResourceManager::initResource()
 	loadTexture2D("resources/textures/pbr/rustediron2_basecolor.png", GL_FALSE, "pbrAlbedo");
 	loadTexture2D("resources/textures/pbr/rustediron2_metallic.png", GL_FALSE, "pbrMetallic");
 	loadTexture2D("resources/textures/pbr/rustediron2_normal.png", GL_FALSE, "pbrNormal");
+	loadTexture2D("resources/textures/breakout/awesomeface.png", GL_TRUE, "awesomeface");
+	loadTexture2D("resources/textures/breakout/block.png", GL_TRUE, "block");
+	loadTexture2D("resources/textures/breakout/block_solid.png", GL_TRUE, "solidBlock");
+	loadTexture2D("resources/textures/breakout/background.jpg", GL_FALSE, "background");
+	loadTexture2D("resources/textures/breakout/paddle.png", GL_TRUE, "paddle");
+	loadTexture2D("resources/textures/breakout/particle.png", GL_TRUE, "particle");
 }
 
 ShaderProgram* ResourceManager::loadShaderProgram(const GLchar* vShaderFile_,

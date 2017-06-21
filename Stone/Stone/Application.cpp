@@ -39,9 +39,11 @@ void Application::exec()
 		{
 		 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 			static Timer timer; 
-			processInput(timer.calcInvertal());
+			auto dt = timer.calcInvertal();
+			processInput(dt);
+			update(dt);
 			draw();
-			showFPS();
+			//showFPS();
 		}
 		glfwPollEvents();
 		glfwSwapBuffers(_window);
@@ -205,6 +207,10 @@ void Application::keyCallback(GLFWwindow* window_, int key_, int scancode_,
 	}
 
 	InputManager::getInstance().processKeyboard(key_, action_);
+}
+
+void Application::update(GLfloat dt_)
+{
 }
 
 void Application::mouseMoveCallback(GLFWwindow* window_, double xPos_,

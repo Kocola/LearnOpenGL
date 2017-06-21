@@ -12,7 +12,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h" />
+    <ClInclude Include="BallObject.h" />
     <ClInclude Include="Bloom.h" />
+    <ClInclude Include="Breakout.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Common.h" />
     <ClInclude Include="Cube.h" />
@@ -20,16 +22,21 @@
     <ClInclude Include="CubeMesh.h" />
     <ClInclude Include="DeferedRender.h" />
     <ClInclude Include="DirectionalLight.h" />
+    <ClInclude Include="GameLevel.h" />
+    <ClInclude Include="GameObject.h" />
     <ClInclude Include="HDR.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="Light.h" />
     <ClInclude Include="Mesh.h" />
     <ClInclude Include="NormalMap.h" />
     <ClInclude Include="ParallaxMap.h" />
+    <ClInclude Include="Particle.h" />
+    <ClInclude Include="ParticleGenerator.h" />
     <ClInclude Include="PBR.h" />
     <ClInclude Include="Plane.h" />
     <ClInclude Include="PlaneMesh.h" />
     <ClInclude Include="PointLight.h" />
+    <ClInclude Include="PostProcessor.h" />
     <ClInclude Include="Shape.h" />
     <ClInclude Include="ModelFile.h" />
     <ClInclude Include="PlaneFit.h" />
@@ -40,17 +47,22 @@
     <ClInclude Include="Sphere.h" />
     <ClInclude Include="SphereMesh.h" />
     <ClInclude Include="SpotLight.h" />
+    <ClInclude Include="Sprite.h" />
     <ClInclude Include="StelaRubb.h" />
     <ClInclude Include="Singleton.h" />
     <ClInclude Include="SunEarthMoon.h" />
     <ClInclude Include="Test.h" />
+    <ClInclude Include="Text.h" />
     <ClInclude Include="Texture2D.h" />
     <ClInclude Include="Timer.h" />
+    <ClInclude Include="Util.h" />
     <ClInclude Include="Utility.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
+    <ClCompile Include="BallObject.cpp" />
     <ClCompile Include="Bloom.cpp" />
+    <ClCompile Include="Breakout.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Common.cpp" />
     <ClCompile Include="Cube.cpp" />
@@ -58,6 +70,8 @@
     <ClCompile Include="CubeMesh.cpp" />
     <ClCompile Include="DeferedRender.cpp" />
     <ClCompile Include="DirectionalLight.cpp" />
+    <ClCompile Include="GameLevel.cpp" />
+    <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="HDR.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="Light.cpp" />
@@ -65,11 +79,14 @@
     <ClCompile Include="ModelFile.cpp" />
     <ClCompile Include="NormalMap.cpp" />
     <ClCompile Include="ParallaxMap.cpp" />
+    <ClCompile Include="Particle.cpp" />
+    <ClCompile Include="ParticleGeneratorcpp.cpp" />
     <ClCompile Include="PBR.cpp" />
     <ClCompile Include="Plane.cpp" />
     <ClCompile Include="PlaneFit.cpp" />
     <ClCompile Include="PlaneMesh.cpp" />
     <ClCompile Include="PointLight.cpp" />
+    <ClCompile Include="PostProcessor.cpp" />
     <ClCompile Include="ResourceManager.cpp" />
     <ClCompile Include="ShaderProgram.cpp" />
     <ClCompile Include="Shape.cpp" />
@@ -79,11 +96,14 @@
     <ClCompile Include="Sphere.cpp" />
     <ClCompile Include="SphereMesh.cpp" />
     <ClCompile Include="SpotLight.cpp" />
+    <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="StelaRubb.cpp" />
     <ClCompile Include="SunEarthMoon.cpp" />
     <ClCompile Include="Test.cpp" />
+    <ClCompile Include="Text.cpp" />
     <ClCompile Include="Texture2D.cpp" />
     <ClCompile Include="Timer.cpp" />
+    <ClCompile Include="Util.cpp" />
     <ClCompile Include="Utility.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -134,7 +154,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>OPENGL32.LIB;glew32s.lib;glfw3.lib;glut.lib;GLU32.LIB;glut32.lib;GLAUX.LIB;SOIL.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>OPENGL32.LIB;glew32s.lib;glfw3.lib;glut.lib;GLU32.LIB;glut32.lib;GLAUX.LIB;SOIL.lib;freetype28.lib;freetype28d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -153,7 +173,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>OPENGL32.LIB;glew32s.lib;glfw3.lib;SOIL.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>OPENGL32.LIB;glew32s.lib;glfw3.lib;SOIL.lib;freetype28.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

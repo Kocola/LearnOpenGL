@@ -37,7 +37,10 @@ private:
 
 	void exit();
 
-	void processInput(GLfloat dt);
+protected:
+	virtual void processInput(GLfloat dt);	//设置为虚函数，在子类里重写
+
+	virtual void update(GLfloat dt_);	//设置为虚函数，可以在子类里重写
 
 	void showFPS();
 
