@@ -102,6 +102,12 @@ void ResourceManager::initResource()
 	loadTexture2D("resources/textures/breakout/background.jpg", GL_FALSE, "background");
 	loadTexture2D("resources/textures/breakout/paddle.png", GL_TRUE, "paddle");
 	loadTexture2D("resources/textures/breakout/particle.png", GL_TRUE, "particle");
+	loadTexture2D("resources/textures/breakout/powerup/powerup_speed.png", GL_FALSE, "powerupSpeed");
+	loadTexture2D("resources/textures/breakout/powerup/powerup_sticky.png", GL_FALSE, "powerupSticky");
+	loadTexture2D("resources/textures/breakout/powerup/powerup_passthrough.png", GL_FALSE, "powerupPassThrough");
+	loadTexture2D("resources/textures/breakout/powerup/powerup_increase.png", GL_FALSE, "powerupIncrease");
+	loadTexture2D("resources/textures/breakout/powerup/powerup_confuse.png", GL_FALSE, "powerupConfuse");
+	loadTexture2D("resources/textures/breakout/powerup/powerup_chaos.png", GL_FALSE, "powerupChaos");
 }
 
 ShaderProgram* ResourceManager::loadShaderProgram(const GLchar* vShaderFile_,

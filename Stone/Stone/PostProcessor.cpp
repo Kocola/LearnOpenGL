@@ -183,6 +183,16 @@ void PostProcessor::setShakeTime(float shakeTime_)
 	this->_shakeTime = shakeTime_;
 }
 
+void PostProcessor::setConfuse(bool isConfuse_)
+{
+	this->_isConfuse = isConfuse_;
+}
+
+void PostProcessor::setChaos(bool isChaos_)
+{
+	this->_isChaos = isChaos_;
+}
+
 bool PostProcessor::isShake() const
 {
 	return this->_isShake;
@@ -191,4 +201,14 @@ bool PostProcessor::isShake() const
 float PostProcessor::getShakeTime() const
 {
 	return this->_shakeTime;
+}
+
+bool PostProcessor::isConfuse() const
+{
+	return this->_isConfuse;
+}
+
+bool PostProcessor::isChaos() const
+{
+	return this->_isChaos;
 }

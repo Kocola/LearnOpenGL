@@ -29,6 +29,10 @@ public:
 
 	void setContentSize(const glm::vec2& size_);
 
+	void setColor(const glm::vec3& color_);
+
+	void setTexture(const Texture2D& texture_);
+
 public:
 	bool isDestroyed() const;
 

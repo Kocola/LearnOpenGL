@@ -24,14 +24,24 @@ public:
 public:
 	void setStuck(bool stuck_);
 
+	void setSticky(bool sticky_);	//2017.6.22
+
+	void setPassThrough(bool passthrough_);	//2017.6.22
+
 public:
 	bool isStuck() const;
 
 	float getRadius() const;
 
+	bool isSticky() const;
+
+	bool isPassThrough() const;
+
 private:
 	float				_radius;
 	bool				_stuck;
+	bool				_sticky;	//2017.6.22
+	bool				_passthrough;	//2017.6.22
 };
 
 #endif

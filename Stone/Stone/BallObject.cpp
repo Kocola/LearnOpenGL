@@ -13,6 +13,8 @@ BallObject::BallObject(const glm::vec2& pos_, float radius_, const glm::vec2& ve
 	this->setVecolity(velocity_);
 	this->_radius = radius_;
 	this->_stuck = true;
+	this->_sticky = false;		//2017.6.22
+	this->_passthrough = false;	//2017.6.22
 }
 
 BallObject::~BallObject()
@@ -56,11 +58,23 @@ void BallObject::reset(const glm::vec2& position_, const glm::vec2& velocity_)
 	this->setPosition(position_);
 	this->setVecolity(velocity_);
 	this->_stuck = true;	//初始时是在玩家board上
+	this->_sticky = false;		//2017.6.22
+	this->_passthrough = false;	//2017.6.22
 }
 
 void BallObject::setStuck(bool stuck_)
 {
 	this->_stuck = stuck_;
+}
+
+void BallObject::setSticky(bool sticky_)
+{
+	this->_sticky = sticky_;
+}
+
+void BallObject::setPassThrough(bool passthrough_)
+{
+	this->_passthrough = passthrough_;
 }
 
 bool BallObject::isStuck() const
@@ -73,3 +87,12 @@ float BallObject::getRadius() const
 	return this->_radius;
 }
 
+bool BallObject::isSticky() const
+{
+	return this->_sticky;
+}
+
+bool BallObject::isPassThrough() const
+{
+	return this->_passthrough;
+}

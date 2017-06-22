@@ -1,5 +1,7 @@
 #include "Breakout.h"
 
+#include <algorithm>
+
 #include "InputManager.h"
 #include "ResourceManager.h"
 #include "Util.h"
@@ -7,6 +9,16 @@
 const glm::vec2 INITIAL_BALL_VELOCITY = glm::vec2(100.0f, -350.f);
 
 const float BALL_RADIUS = 12.5f;
+
+const std::string SPEED_TYPE = "speed";
+const std::string STICKY_TYPE = "sticky";
+const std::string PASS_THROUGH_TYPE = "pass-throught";
+const std::string INCREASE_TYPE = "pad-size-increase";
+const std::string CONFUSE_TYPE = "confuse";
+const std::string CHAOS_TYPE = "chaos";
+
+const int PROFIT_POWERUP_ODDS = 75;
+const int NEGATIVE_POWERUP_ODDS = 30;
 
 Breakout::Breakout()
 	: Application(SCREEN_WIDTH, SCREEN_HEIGHT, "Breakout")
@@ -30,7 +42,7 @@ void Breakout::init()
 		this->_levels.push_back(tmp);
 	}
 	//设置初始关卡为1
-	this->_curLevel = 1;
+	this->_curLevel = 0;
 
 	//背景精灵
 	_bgSprite = Sprite(ResourceManager::getInstance().getTexture2D("background"));
@@ -111,8 +123,11 @@ void Breakout::update(GLfloat dt_)
 
 	if (_ball.getPosition().y >= SCREEN_HEIGHT)
 	{
-		this->resetLevel();
-		this->resetPlayer();
+		//this->resetLevel();
+		//this->resetPlayer();
+		//init();
+		//简单重置
+		reset();
 	}
 
 	//碰撞效果
@@ -124,6 +139,9 @@ void Breakout::update(GLfloat dt_)
 			_effect.setIsShake(false);
 		}
 	}
+
+	//更新道具信息
+	updatePowerups(dt_);
 }
 
 void Breakout::draw()
@@ -145,6 +163,14 @@ void Breakout::draw()
 		this->_ball.draw();
 		//绘制粒子
 		this->_particles.draw();
+		//绘制道具
+		for (auto& powerup : _powerups)
+		{
+			if (powerup.isDestroyed() == false)
+			{
+				powerup.draw();
+			}
+		}
 
 		_effect.endRender();
 
@@ -152,6 +178,168 @@ void Breakout::draw()
 	}
 
 	glEnable(GL_DEPTH_TEST);
+}
+
+void Breakout::spawnPowerups(const GameObject& block_)
+{
+	Texture2D texture;
+	glm::vec2 position = block_.getPosition();
+	if (shouldSpwan(PROFIT_POWERUP_ODDS))
+	{
+		texture = ResourceManager::getInstance().getTexture2D("powerupSpeed");
+		this->_powerups.push_back(Powerup(
+			SPEED_TYPE, position, texture, glm::vec3(0.5f, 0.5f, 1.0f), 0.0f));
+	}
+
+	if (shouldSpwan(PROFIT_POWERUP_ODDS))
+	{
+		texture = ResourceManager::getInstance().getTexture2D("powerupSticky");
+		this->_powerups.push_back(Powerup(
+			STICKY_TYPE, position, texture, glm::vec3(1.0f, 0.5f, 1.0f), 20.f));
+	}
+
+	if (shouldSpwan(PROFIT_POWERUP_ODDS))
+	{
+		texture = ResourceManager::getInstance().getTexture2D("powerupPassThrough");
+		this->_powerups.push_back(Powerup(
+			PASS_THROUGH_TYPE, position, texture, glm::vec3(0.5f, 1.0f, 0.5f), 10.0f));
+	}
+
+	if (shouldSpwan(PROFIT_POWERUP_ODDS))
+	{
+		texture = ResourceManager::getInstance().getTexture2D("powerupIncrease");
+		this->_powerups.push_back(Powerup(
+			INCREASE_TYPE, position, texture, glm::vec3(1.0f, 0.6f, 0.4f), 0.0f));
+	}
+
+	if (shouldSpwan(NEGATIVE_POWERUP_ODDS))
+	{
+		texture = ResourceManager::getInstance().getTexture2D("powerupConfuse");
+		this->_powerups.push_back(Powerup(
+			CONFUSE_TYPE, position, texture, glm::vec3(1.0f, 0.3f, 0.3f), 15.0f));
+	}
+
+	if (shouldSpwan(NEGATIVE_POWERUP_ODDS))
+	{
+		texture = ResourceManager::getInstance().getTexture2D("powerupChaos");
+		this->_powerups.push_back(Powerup(
+			CHAOS_TYPE, position, texture, glm::vec3(0.9f, 0.25f, 0.25f), 15.0f));
+	}
+}
+
+void Breakout::updatePowerups(GLfloat dt_)
+{
+	for (auto& powerup : this->_powerups)
+	{
+		//更新道具位置
+		powerup.setPosition(powerup.getPosition() + powerup.getVelocity() * dt_);
+		if (powerup.isActivated())
+		{
+			//更新道具持续时间
+			powerup.setDuration(powerup.getDuration() - dt_);
+			if (powerup.getDuration() <= 0.0f)
+			{
+				//设置该道具失效
+				powerup.setActivated(false);
+
+				const std::string type = powerup.getType();
+				//删除该道具的效果
+				if (type == STICKY_TYPE)
+				{
+					if (isOtherPowerupActive(_powerups, type) == false)
+					{
+						//没有其它相同的道具效果处于激活时才重置
+						_ball.setSticky(false);
+						_player.setColor(glm::vec3(1.0f));
+					}
+				}
+				else if (type == PASS_THROUGH_TYPE)
+				{
+					if (isOtherPowerupActive(_powerups, type) == false)
+					{
+						_ball.setPassThrough(false);
+						_player.setColor(glm::vec3(1.0f));
+					}
+				}
+				else if (type == CONFUSE_TYPE)
+				{
+					if (isOtherPowerupActive(_powerups, type) == false)
+					{
+						_effect.setConfuse(false);
+					}
+				}
+				else if (type == CHAOS_TYPE)
+				{
+					if (isOtherPowerupActive(_powerups, type) == false)
+					{
+						_effect.setChaos(false);
+					}
+				}
+			}
+		}
+	}
+	//从道具数组上删除失效且处于待销毁状态的道具
+	this->_powerups.erase(
+		std::remove_if(this->_powerups.begin(), this->_powerups.end(), 
+		[](const Powerup& powerup_){
+			return powerup_.isDestroyed() && powerup_.isActivated() == false;
+		}
+	), this->_powerups.end());
+}
+
+bool Breakout::shouldSpwan(int chance_)
+{
+	int random = rand() % chance_;
+	return random == 0;
+}
+
+void Breakout::activatePowerup(const Powerup& powerup_)
+{
+	std::string type = powerup_.getType();
+	if (type == SPEED_TYPE)
+	{
+		_ball.setVecolity(_ball.getVelocity() * 1.2f);
+	}
+	else if (type == STICKY_TYPE)
+	{
+		_ball.setSticky(true);
+		_player.setColor(glm::vec3(1.0f, 0.5f, 1.0f));
+	}
+	else if (type == PASS_THROUGH_TYPE)
+	{
+		_ball.setPassThrough(true);
+		_ball.setColor(glm::vec3(1.0f, 0.5f, 0.5f));
+	}
+	else if (type == CONFUSE_TYPE)
+	{
+		if (_effect.isConfuse() == false)
+		{
+			_effect.setConfuse(true);
+		}
+	}
+	else if (type == CHAOS_TYPE)
+	{
+		if (_effect.isChaos() == false)
+		{
+			_effect.setChaos(true);
+		}
+	}
+}
+
+bool Breakout::isOtherPowerupActive(const std::vector<Powerup>& powerups_, 
+	const std::string& type_)
+{
+	for (auto& powerup : powerups_)
+	{
+		if (powerup.isActivated())
+		{
+			if (powerup.getType() == type_)
+			{
+				return true;
+			}
+		}
+	}
+	return false;
 }
 
 void Breakout::doCollision()
@@ -167,6 +355,7 @@ void Breakout::doCollision()
 				if (box.isSolid() == false)
 				{
 					box.setIsDestroyed(true);
+					this->spawnPowerups(box);	//2017.6.22
 				}
 				else//碰撞效果
 				{
@@ -177,37 +366,40 @@ void Breakout::doCollision()
 				//碰撞解析
 				Util::Direction dir = std::get<1>(collision);
 				glm::vec2 diffVector = std::get<2>(collision);
-				//水平碰撞
-				if (dir == Util::Direction::LEFT || dir == Util::Direction::RIGHT)
+				if (!(_ball.isPassThrough() && !box.isSolid()))	//如果是非solid，而且不是passthrough，那么就执行碰撞效果
 				{
-					_ball.setVecolity(glm::vec2(_ball.getVelocity().x * -1.0f, _ball.getVelocity().y));
-					float penetration = _ball.getRadius() - std::abs(diffVector.x);
-					glm::vec2 position = _ball.getPosition();
-					if (dir == Util::Direction::LEFT)
+					//水平碰撞
+					if (dir == Util::Direction::LEFT || dir == Util::Direction::RIGHT)
 					{
-						position.x += penetration;
+						_ball.setVecolity(glm::vec2(_ball.getVelocity().x * -1.0f, _ball.getVelocity().y));
+						float penetration = _ball.getRadius() - std::abs(diffVector.x);
+						glm::vec2 position = _ball.getPosition();
+						if (dir == Util::Direction::LEFT)
+						{
+							position.x += penetration;
+						}
+						else
+						{
+							position.x -= penetration;
+						}
+						_ball.setPosition(position);
 					}
+					//竖直碰撞
 					else
 					{
-						position.x -= penetration;
+						_ball.setVecolity(_ball.getVelocity() * glm::vec2(1.0f, -1.0f));
+						float penetration = _ball.getRadius() - std::abs(diffVector.y);
+						glm::vec2 position = _ball.getPosition();
+						if (dir == Util::Direction::UP)
+						{
+							position -= penetration;
+						}
+						else
+						{
+							position += penetration;
+						}
+						_ball.setPosition(position);
 					}
-					_ball.setPosition(position);
-				}
-				//竖直碰撞
-				else
-				{
-					_ball.setVecolity(_ball.getVelocity() * glm::vec2(1.0f, -1.0f));
-					float penetration = _ball.getRadius() - std::abs(diffVector.y);
-					glm::vec2 position = _ball.getPosition();
-					if (dir == Util::Direction::UP)
-					{
-						position -= penetration;
-					}
-					else
-					{
-						position += penetration;
-					}
-					_ball.setPosition(position);
 				}
 			}
 		}
@@ -229,7 +421,35 @@ void Breakout::doCollision()
 		velocity.y = -std::abs(oldVelocity.y);
 		velocity = glm::normalize(velocity) * glm::length(oldVelocity);
 		_ball.setVecolity(velocity);
+
+		//2017.6.22
+		_ball.setStuck(_ball.isSticky());
 	}
+
+	//2017.6.22
+	for (auto& powerup : this->_powerups)
+	{
+		if (powerup.isDestroyed() == false)
+		{
+			if (powerup.getPosition().y >= SCREEN_HEIGHT)
+			{
+				powerup.setIsDestroyed(true);
+			}
+			if (Util::checkCollision(_player, powerup))
+			{
+				activatePowerup(powerup);
+				powerup.setIsDestroyed(true);
+				powerup.setActivated(true);
+			}
+		}
+	}
+}
+
+void Breakout::reset()
+{
+	this->resetLevel();
+	this->resetPlayer();
+	this->resetEffect();
 }
 
 void Breakout::resetLevel()
@@ -250,10 +470,17 @@ void Breakout::resetPlayer()
 	glm::vec2 playerSize = glm::vec2(100, 20);
 	glm::vec2 playerPosition = glm::vec2(SCREEN_WIDTH / 2.0f, SCREEN_HEIGHT)
 		- glm::vec2(playerSize.x / 2.0f, playerSize.y);
+	_player.setPosition(playerPosition);
+	_player.setContentSize(playerSize);
 	_player.setVecolity(glm::vec2(45.0f, 0.0f));	//不可以竖直移动
 
 	//小球
 	glm::vec2 ballPos = _player.getPosition() + glm::vec2(_player.getContentSize().x / 2.0f - BALL_RADIUS,
 		-BALL_RADIUS * 2.0f);
 	_ball.reset(ballPos, INITIAL_BALL_VELOCITY);
+}
+
+void Breakout::resetEffect()
+{
+	_effect = PostProcessor(SCREEN_WIDTH, SCREEN_HEIGHT);
 }

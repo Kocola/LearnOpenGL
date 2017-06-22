@@ -38,10 +38,18 @@ public:
 
 	void setShakeTime(float shakeTime_);
 
+	void setConfuse(bool isConfuse_);		//2017.6.22
+
+	void setChaos(bool isChaos_);	//2017.6.22
+
 public:
 	bool isShake() const;
 
 	float getShakeTime() const;
+
+	bool isConfuse() const;		//2017.6.22
+
+	bool isChaos() const;		//2017.6.22
 
 private:
 	int							_width;

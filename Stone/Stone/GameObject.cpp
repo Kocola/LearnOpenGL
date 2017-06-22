@@ -49,6 +49,16 @@ void GameObject::setContentSize(const glm::vec2& size_)
 	this->_sprite.setContentSize(size_);
 }
 
+void GameObject::setColor(const glm::vec3& color_)
+{
+	this->_sprite.setColor(color_);
+}
+
+void GameObject::setTexture(const Texture2D& texture_)
+{
+	this->_sprite.setTexture(texture_);
+}
+
 bool GameObject::isDestroyed() const
 {
 	return this->_isDestroyed;
